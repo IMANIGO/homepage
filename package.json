@@ -1,0 +1,11 @@
+{
+  "name": "imanigo-homepage",
+  "private": true,
+  "scripts": {
+    "dev:web": "cd web && npm install && npm run dev",
+    "build:web": "cd web && npm install && npm run build",
+    "lint:web": "cd web && npm install && npm run lint",
+    "dev:studio": "cd studio && npm install --legacy-peer-deps && npm run dev",
+    "build:studio": "cd studio && npm install --legacy-peer-deps && npm run build"
+  }
+}

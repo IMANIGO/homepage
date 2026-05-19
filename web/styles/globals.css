@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #000814;
+  color: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #000814;
+  color: #FFFFFF;
+}
+
+::selection {
+  background: rgba(0, 245, 255, 0.24);
+  color: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #00F5FF;
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-xl bg-accent px-5 py-3 text-slate-950 font-semibold shadow-glow;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center rounded-xl border border-accentSoft bg-white/5 px-5 py-3 text-accent;
+}
+
+.card-surface {
+  @apply rounded-[1rem] border border-white/10 bg-surface/80 p-6 shadow-soft backdrop-blur-xl;
+}
+
+.gradient-border {
+  border-image: linear-gradient(135deg, rgba(0,245,255,0.27), rgba(47,159,255,0.12)) 1;
+}

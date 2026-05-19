@@ -1,0 +1,16 @@
+{
+  "name": "imanigo-studio",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "@sanity/desk-tool": "^2.36.6",
+    "@sanity/vision": "^2.36.6",
+    "@sanity/code-input": "^2.36.0",
+    "sanity": "^5.26.0"
+  }
+}
