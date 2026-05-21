@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "service-software-de",
+    "_type": "servicePage",
+    "locale": "de",
+    "slug": { "current": "software" },
+    "title": "Softwareentwicklung",
+    "eyebrow": "Service",
+    "intro": "Wir entwickeln maßgeschneiderte Softwarelösungen.",
+    "description": "Individuelle Softwareentwicklung von der Idee bis zur Auslieferung.",
+    "body": [{ "heading": "Vorgehen", "text": "Analyse, Prototyping, Implementierung." }]
+  },
+  {
+    "_id": "service-transfer-de",
+    "_type": "servicePage",
+    "locale": "de",
+    "slug": { "current": "transfer" },
+    "title": "Technologietransfer",
+    "eyebrow": "Service",
+    "intro": "Wir unterstützen beim Transfer neuer Technologien.",
+    "description": "Transfer- und Integrationssupport für bestehende Teams.",
+    "body": [{ "heading": "Leistungen", "text": "Assessment, Integration, Coaching." }]
+  },
+  {
+    "_id": "service-sponsored-de",
+    "_type": "servicePage",
+    "locale": "de",
+    "slug": { "current": "sponsored" },
+    "title": "Geförderte Projekte",
+    "eyebrow": "Service",
+    "intro": "Beratung zu geförderten Forschungs- und Entwicklungsprojekten.",
+    "description": "Wir helfen beim Finden und Beantragen von Förderungen.",
+    "body": [{ "heading": "Förderung", "text": "Förderberatung, Antragstellung, Projektmanagement." }]
+  },
+  {
+    "_id": "about-de",
+    "_type": "aboutPage",
+    "locale": "de",
+    "title": "Über uns",
+    "eyebrow": "IMANIGO",
+    "intro": "Wir sind ein kleines Team aus Entwicklern und Strategen.",
+    "description": "Unsere Mission ist es, digitale Produkte mit Sinn zu bauen.",
+    "body": [{ "heading": "Team", "text": "Erfahrene Entwickler und Berater." }]
+  },
+  {
+    "_id": "contact-de",
+    "_type": "contactPage",
+    "locale": "de",
+    "title": "Kontakt",
+    "eyebrow": "Kontakt",
+    "intro": "Nimm Kontakt mit uns auf.",
+    "description": "Schreibe uns eine E-Mail oder buche ein Erstgespräch.",
+    "body": [{ "heading": "E-Mail", "text": "contact@imanigo.de" }]
+  },
+  {
+    "_id": "legal-impressum-de",
+    "_type": "legalPage",
+    "locale": "de",
+    "slug": { "current": "impressum" },
+    "title": "Impressum",
+    "eyebrow": "Rechtliches",
+    "intro": "Angaben gemäß § 5 TMG",
+    "description": "Impressumsdaten für IMANIGO.",
+    "body": [{ "heading": "Anschrift", "text": "Adalbert-Stifter-Str. 32, 83301 Traunreut" }]
+  },
+  {
+    "_id": "legal-datenschutz-de",
+    "_type": "legalPage",
+    "locale": "de",
+    "slug": { "current": "datenschutz" },
+    "title": "Datenschutz",
+    "eyebrow": "Rechtliches",
+    "intro": "Datenschutzhinweise",
+    "description": "Informationen zum Datenschutz.",
+    "body": [{ "heading": "Datenverarbeitung", "text": "Wir verarbeiten Daten gemäß DSGVO." }]
+  },
+  {
+    "_id": "testimonial-1-de",
+    "_type": "testimonial",
+    "locale": "de",
+    "quote": "Sehr professionelle Zusammenarbeit.",
+    "author": "Max Mustermann",
+    "company": "Beispiel GmbH"
+  },
+  {
+    "_id": "metric-1-de",
+    "_type": "metric",
+    "locale": "de",
+    "label": "Projekte",
+    "value": "25",
+    "detail": "Abgeschlossene Projekte"
+  },
+  {
+    "_id": "site-settings-de",
+    "_type": "siteSettings",
+    "locale": "de",
+    "siteTitle": "IMANIGO",
+    "businessName": "IMANIGO GmbH",
+    "tagline": "Digitales mit Sinn",
+    "email": "contact@imanigo.de",
+    "address": "Adalbert-Stifter-Str. 32, 83301 Traunreut",
+    "phoneHidden": false
+  },
+  {
+    "_id": "homePage-de",
+    "_type": "homePage",
+    "locale": "de",
+    "heroTitle": "Digitale Produkte mit Sinn",
+    "heroSubtitle": "Wir bauen Software für nachhaltige Wirkung.",
+    "aboutSummary": "Beratung, Entwicklung und Transfer.",
+    "serviceCards": [
+      { "_type": "reference", "_ref": "service-software-de" },
+      { "_type": "reference", "_ref": "service-transfer-de" },
+      { "_type": "reference", "_ref": "service-sponsored-de" }
+    ],
+    "trustPoints": [
+      { "tag": "Kunden", "title": "Zufriedene Kunden", "detail": "Langfristige Partnerschaften" }
+    ],
+    "testimonials": [{ "_type": "reference", "_ref": "testimonial-1-de" }],
+    "metrics": [{ "_type": "reference", "_ref": "metric-1-de" }]
+  }
+]

@@ -6,8 +6,8 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: ReturnType<type
   return (
     <header className="mb-10 flex flex-col gap-6 border-b border-white/10 pb-6">
       <div className="flex items-center justify-between gap-4">
-        <a href={`/${lang}`} className="text-xl font-semibold tracking-[0.18em] text-white">
-          IMANIGO
+        <a href={`/${lang}`} className="flex items-center gap-3">
+          <img src="/images/logo-dark.png" alt="IMANIGO" className="h-8 w-auto" />
         </a>
         <nav className="hidden items-center gap-2 md:flex">
           {navItems.map((item) => {

@@ -12,6 +12,14 @@
     "@sanity/desk-tool": "^2.36.6",
     "@sanity/vision": "^2.36.6",
     "sanity": "^5.26.0",
-    "styled-components": "^6.4.2"
+    "styled-components": "^6.4.2",
+    "@sanity/client": "^7.22.0",
+    "dotenv": "^16.3.1"
+  }
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "seed": "node ./scripts/seed.js"
   }
 }
