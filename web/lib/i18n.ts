@@ -47,6 +47,13 @@ export const getDictionary = (locale: Locale) => {
         addressHeading: 'Base and business address',
         offerDisclaimer: 'Travel and hotel costs are required for vehicle transfer requests from Traunreut.'
       },
+      footer: {
+        contactHeading: 'Contact',
+        email: 'contact@imanigo.de',
+        addressLine1: 'Adalbert-Stifter-Str. 32',
+        addressLine2: '83301 Traunreut',
+        cookieNote: 'Essential cookies only. No analytics until consented.'
+      },
       pageTitles: {
         software: 'Custom software for clients',
         transfer: 'Vehicle transfer across Europe',
@@ -101,6 +108,13 @@ export const getDictionary = (locale: Locale) => {
         contactText: 'Schreiben Sie kurz oder senden Sie eine Anfrage für ein Gespräch.',
         addressHeading: 'Adresse',
         offerDisclaimer: 'Für Fahrzeugtransfers werden Reise- und Hotelkosten ab Traunreut benötigt.'
+      },
+      footer: {
+        contactHeading: 'Kontakt',
+        email: 'contact@imanigo.de',
+        addressLine1: 'Adalbert-Stifter-Str. 32',
+        addressLine2: '83301 Traunreut',
+        cookieNote: 'Nur essentielle Cookies. Keine Analyse ohne Zustimmung.'
       },
       pageTitles: {
         software: 'Individuelle Software für Kund:innen',

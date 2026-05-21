@@ -6,17 +6,16 @@ export function Footer({ lang, dict }: { lang: Locale; dict: ReturnType<typeof g
     <footer className="mt-16 border-t border-white/10 pt-8 text-sm text-slate-400">
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <p className="font-semibold text-white">IMANIGO</p>
-          <p>{dict.brand}</p>
-          <p>Adalbert-Stifter-Str. 32</p>
-          <p>83301 Traunreut</p>
+          <p className="font-semibold text-white">{dict.brand}</p>
+          <p>{dict.footer.addressLine1}</p>
+          <p>{dict.footer.addressLine2}</p>
         </div>
         <div>
-          <p className="font-semibold text-white">Contact</p>
+          <p className="font-semibold text-white">{dict.footer.contactHeading}</p>
           <p>
-            <a href="mailto:contact@imanigo.de" className="text-accent">contact@imanigo.de</a>
+            <a href={`mailto:${dict.footer.email}`} className="text-accent">{dict.footer.email}</a>
           </p>
-          <p className="mt-3 text-slate-500">Essential cookies only. No analytics until consented.</p>
+          <p className="mt-3 text-slate-500">{dict.footer.cookieNote}</p>
         </div>
       </div>
       <div className="mt-8 flex flex-wrap gap-4 text-xs text-slate-500">

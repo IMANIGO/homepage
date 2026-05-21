@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "service-software-en",
+    "_type": "servicePage",
+    "locale": "en",
+    "slug": { "current": "software" },
+    "title": "Software Services",
+    "eyebrow": "Service",
+    "intro": "I build tailored software that solves real business problems.",
+    "description": "Custom software development from discovery to delivery.",
+    "body": [{ "heading": "Approach", "text": "Analysis, prototyping, implementation and reliable delivery." }]
+  },
+  {
+    "_id": "service-transfer-en",
+    "_type": "servicePage",
+    "locale": "en",
+    "slug": { "current": "transfer" },
+    "title": "Vehicle Transfer",
+    "eyebrow": "Service",
+    "intro": "I move vehicles safely across Europe with transparent logistics.",
+    "description": "Reliable vehicle transfer services with clear planning and tracking.",
+    "body": [{ "heading": "Services", "text": "Route planning, customs support, transport coordination." }]
+  },
+  {
+    "_id": "service-sponsored-en",
+    "_type": "servicePage",
+    "locale": "en",
+    "slug": { "current": "sponsored" },
+    "title": "Sponsored Content",
+    "eyebrow": "Service",
+    "intro": "I create authentic content and channel formats for brand storytelling.",
+    "description": "Sponsored content with a calm, personal tone that builds trust.",
+    "body": [{ "heading": "What I offer", "text": "Concepts, production guidance and campaign-ready formats." }]
+  },
+  {
+    "_id": "about-en",
+    "_type": "aboutPage",
+    "locale": "en",
+    "title": "About IMANIGO",
+    "eyebrow": "IMANIGO",
+    "intro": "A small team of developers and strategists working with clarity.",
+    "description": "My mission is to build digital products that perform and feel honest.",
+    "body": [{ "heading": "Team", "text": "Experienced developers and project partners focused on sustainable results." }]
+  },
+  {
+    "_id": "contact-en",
+    "_type": "contactPage",
+    "locale": "en",
+    "title": "Contact",
+    "eyebrow": "Contact",
+    "intro": "Get in touch to start your next project.",
+    "description": "Send an email or request a free call.",
+    "body": [{ "heading": "Email", "text": "contact@imanigo.de" }]
+  },
+  {
+    "_id": "legal-impressum-en",
+    "_type": "legalPage",
+    "locale": "en",
+    "slug": { "current": "impressum" },
+    "title": "Imprint",
+    "eyebrow": "Legal",
+    "intro": "Legal information required under German law.",
+    "description": "Imprint details for IMANIGO.",
+    "body": [{ "heading": "Address", "text": "Adalbert-Stifter-Str. 32, 83301 Traunreut" }]
+  },
+  {
+    "_id": "legal-datenschutz-en",
+    "_type": "legalPage",
+    "locale": "en",
+    "slug": { "current": "datenschutz" },
+    "title": "Privacy Policy",
+    "eyebrow": "Legal",
+    "intro": "Information on data protection.",
+    "description": "How data is handled and protected.",
+    "body": [{ "heading": "Data Processing", "text": "Data is processed in accordance with GDPR." }]
+  },
+  {
+    "_id": "testimonial-1-en",
+    "_type": "testimonial",
+    "locale": "en",
+    "quote": "A very professional collaboration.",
+    "author": "Max Mustermann",
+    "company": "Example GmbH"
+  },
+  {
+    "_id": "metric-1-en",
+    "_type": "metric",
+    "locale": "en",
+    "label": "Projects",
+    "value": "25",
+    "detail": "Completed engagements"
+  },
+  {
+    "_id": "site-settings-en",
+    "_type": "siteSettings",
+    "locale": "en",
+    "siteTitle": "IMANIGO",
+    "businessName": "IMANIGO GmbH",
+    "tagline": "Digital solutions with purpose",
+    "email": "contact@imanigo.de",
+    "address": "Adalbert-Stifter-Str. 32, 83301 Traunreut",
+    "phoneHidden": false
+  },
+  {
+    "_id": "homePage-en",
+    "_type": "homePage",
+    "locale": "en",
+    "heroTitle": "Digital products with purpose",
+    "heroSubtitle": "I build software, transfer vehicles across Europe, and create content that feels believable.",
+    "aboutSummary": "Consulting, development and transfer services.",
+    "serviceCards": [
+      { "_type": "reference", "_ref": "service-software-en" },
+      { "_type": "reference", "_ref": "service-transfer-en" },
+      { "_type": "reference", "_ref": "service-sponsored-en" }
+    ],
+    "trustPoints": [
+      { "tag": "Clients", "title": "Satisfied clients", "detail": "Long-term partnerships" }
+    ],
+    "testimonials": [{ "_type": "reference", "_ref": "testimonial-1-en" }],
+    "metrics": [{ "_type": "reference", "_ref": "metric-1-en" }]
+  }
+]

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const createClient = require('@sanity/client');
+const { createClient } = require('@sanity/client');
 
 const projectId = process.env.SANITY_PROJECT_ID;
 const dataset = process.env.SANITY_DATASET || 'production';
@@ -21,14 +21,19 @@ const client = createClient({
 });
 
 async function run() {
-  const filePath = path.join(__dirname, '..', 'data', 'import_all.json');
-  if (!fs.existsSync(filePath)) {
-    console.error('Data file not found:', filePath);
+  const dataDir = path.join(__dirname, '..', 'data');
+  const jsonFiles = fs.readdirSync(dataDir).filter((file) => file.endsWith('.json'));
+
+  if (!jsonFiles.length) {
+    console.error('No JSON data files found in:', dataDir);
     process.exit(1);
   }
 
-  const raw = fs.readFileSync(filePath, 'utf8');
-  const docs = JSON.parse(raw);
+  const docs = jsonFiles.flatMap((fileName) => {
+    const filePath = path.join(dataDir, fileName);
+    const raw = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(raw);
+  });
 
   for (const doc of docs) {
     try {

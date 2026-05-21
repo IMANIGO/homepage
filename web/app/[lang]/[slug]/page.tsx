@@ -60,12 +60,12 @@ export default async function Page(props: PageProps) {
           <div className="card-surface">
             <p className="text-sm uppercase tracking-[0.26em] text-cyan-200">{dict.sidebar.contactHeading}</p>
             <p className="mt-4 text-lg font-semibold text-white">{dict.sidebar.contactText}</p>
-            <a href="mailto:contact@imanigo.de" className="mt-5 block text-accent">contact@imanigo.de</a>
+            <a href={`mailto:${dict.footer.email}`} className="mt-5 block text-accent">{dict.footer.email}</a>
           </div>
           <div className="card-surface">
             <p className="text-sm uppercase tracking-[0.26em] text-cyan-200">{dict.sidebar.addressHeading}</p>
-            <p className="mt-4 text-slate-200">Adalbert-Stifter-Str. 32</p>
-            <p className="text-slate-200">83301 Traunreut</p>
+            <p className="mt-4 text-slate-200">{dict.footer.addressLine1}</p>
+            <p className="text-slate-200">{dict.footer.addressLine2}</p>
             <p className="mt-4 text-slate-400 text-sm">{dict.sidebar.offerDisclaimer}</p>
           </div>
         </aside>
