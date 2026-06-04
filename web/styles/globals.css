@@ -1,10 +1,12 @@
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   color-scheme: dark;
-  font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-body), 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: #000814;
   color: #FFFFFF;
 }
@@ -13,10 +15,43 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.leaflet-container {
+  background: #f1f5f9;
+  font-family: inherit;
+}
+
+.leaflet-control-attribution {
+  font-size: 9px;
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: #64748b !important;
+}
+
 body {
   min-height: 100vh;
-  background-color: #000814;
+  background:
+    radial-gradient(circle at top, rgba(0, 245, 255, 0.08), transparent 28%),
+    #000814;
   color: #FFFFFF;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-headline), var(--font-body), 'Manrope', system-ui, sans-serif;
 }
 
 ::selection {
@@ -51,6 +86,73 @@ a:focus-visible {
   @apply rounded-[1rem] border border-white/10 bg-surface/80 p-6 shadow-soft backdrop-blur-xl;
 }
 
+.logo-halo {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+.logo-halo::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: 155%;
+  height: 175%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 100% 92% at 50% 50%,
+    #000000 0%,
+    #000000 22%,
+    #000814 48%,
+    rgba(0, 8, 20, 0.72) 64%,
+    transparent 82%
+  );
+  filter: blur(6px);
+}
+
+.logo-halo img {
+  position: relative;
+  z-index: 1;
+}
+
 .gradient-border {
   border-image: linear-gradient(135deg, rgba(0,245,255,0.27), rgba(47,159,255,0.12)) 1;
+}
+
+.glow-divider {
+  flex-shrink: 0;
+}
+
+.glow-divider-horizontal {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 245, 255, 0.18) 18%,
+    rgba(0, 245, 255, 0.55) 50%,
+    rgba(0, 245, 255, 0.18) 82%,
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgba(0, 245, 255, 0.28);
+}
+
+.glow-divider-vertical {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 245, 255, 0.18) 18%,
+    rgba(0, 245, 255, 0.55) 50%,
+    rgba(0, 245, 255, 0.18) 82%,
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgba(0, 245, 255, 0.28);
 }

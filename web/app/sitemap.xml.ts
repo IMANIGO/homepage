@@ -3,7 +3,8 @@ import { getSupportedLocales, pageRoutes } from '../lib/i18n';
 export function GET() {
   const baseUrl = 'https://imanigo.de';
   const locales = getSupportedLocales();
-  const urls = ['/', ...pageRoutes].flatMap((path) => locales.map((locale) => `${baseUrl}/${locale}${path}`));
+  const paths = ['', ...pageRoutes];
+  const urls = paths.flatMap((path) => locales.map((locale) => `${baseUrl}/${locale}${path}`));
 
   return new Response(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

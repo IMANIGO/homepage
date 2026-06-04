@@ -18,7 +18,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
-  const isAsset = pathname.startsWith('/_next') || pathname.startsWith('/favicon.ico') || pathname.startsWith('/robots.txt') || pathname.startsWith('/sitemap.xml');
+  const isAsset =
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/images') ||
+    pathname.startsWith('/favicon.ico') ||
+    pathname.startsWith('/robots.txt') ||
+    pathname.startsWith('/sitemap.xml');
 
   if (pathname === '/' || (!pathname.startsWith('/de') && !pathname.startsWith('/en') && !isAsset)) {
     const localeFromCookie = cookies.get('imanigo-lang')?.value;
@@ -31,5 +36,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)']
+  matcher: ['/', '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images).*)']
 };

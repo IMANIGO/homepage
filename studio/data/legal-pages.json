@@ -1,0 +1,442 @@
+[
+  {
+    "_id": "legal-impressum-de",
+    "_type": "legalPage",
+    "locale": "de",
+    "slug": { "current": "impressum" },
+    "title": "Impressum",
+    "eyebrow": "Rechtliches",
+    "intro": "Pflichtangaben für diese Website und als Anbieter unserer mobilen Apps.",
+    "description": "Impressum der IMANIGO GmbH gemäß § 5 TMG.",
+    "body": [
+      {
+        "heading": "Anbieter",
+        "text": "IMANIGO GmbH\nAdalbert-Stifter-Str. 32\n83301 Traunreut\nDeutschland"
+      },
+      {
+        "heading": "Vertreten durch",
+        "text": "Geschäftsführer: Lukas Hradetzky"
+      },
+      {
+        "heading": "Kontakt",
+        "text": "E-Mail: contact@imanigo.de\nTelefon: auf Anfrage"
+      },
+      {
+        "heading": "Registereintrag",
+        "text": "Eingetragen im Handelsregister.\nRegistergericht: [Registergericht eintragen]\nRegisternummer: [HRB-Nummer eintragen]"
+      },
+      {
+        "heading": "Umsatzsteuer-ID",
+        "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:\nDerzeit beantragt; die Nummer wird nach Erteilung durch das zuständige Finanzamt hier ergänzt."
+      },
+      {
+        "heading": "Verantwortlich für den Inhalt (§ 18 Abs. 2 MStV)",
+        "text": "Lukas Hradetzky\nAdalbert-Stifter-Str. 32\n83301 Traunreut"
+      },
+      {
+        "heading": "EU-Streitschlichtung",
+        "text": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr\nUnsere E-Mail-Adresse finden Sie oben im Impressum."
+      },
+      {
+        "heading": "Verbraucherstreitbeilegung",
+        "text": "Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen, sofern nicht gesetzlich zwingend."
+      },
+      {
+        "heading": "Haftung für Inhalte und Links",
+        "text": "Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Für fremde Inhalte übernehmen wir keine Gewähr; bei Bekanntwerden von Rechtsverletzungen entfernen wir entsprechende Inhalte umgehend."
+      }
+    ]
+  },
+  {
+    "_id": "legal-datenschutz-de",
+    "_type": "legalPage",
+    "locale": "de",
+    "slug": { "current": "datenschutz" },
+    "title": "Datenschutzerklärung",
+    "eyebrow": "Rechtliches",
+    "intro": "Informationen zur Verarbeitung personenbezogener Daten auf imanigo.de und in unseren Apps (iOS, Android).",
+    "description": "Datenschutzerklärung für Website und mobile Anwendungen der IMANIGO GmbH.",
+    "body": [
+      {
+        "heading": "1. Verantwortlicher",
+        "text": "IMANIGO GmbH\nAdalbert-Stifter-Str. 32\n83301 Traunreut\nE-Mail: contact@imanigo.de\n\nVerantwortlicher im Sinne der DSGVO für diese Website und die von uns veröffentlichten mobilen Apps (z. B. PlanYourMeals)."
+      },
+      {
+        "heading": "2. Geltungsbereich",
+        "text": "Diese Erklärung gilt für:\n• die Website imanigo.de (DE/EN),\n• die mobilen Apps PlanYourMeals (PYM) für iOS und Android,\n• die zugehörige Web-App unter planyourmeals.de, sofern dort dieselben Konten genutzt werden.\n\nApp-spezifische Hinweise sind in Abschnitt 8 gekennzeichnet."
+      },
+      {
+        "heading": "3. Kontakt Datenschutz",
+        "text": "Anfragen zum Datenschutz richten Sie bitte an contact@imanigo.de mit dem Betreff „Datenschutz“. Wir antworten in der Regel innerhalb von 30 Tagen."
+      },
+      {
+        "heading": "4. Website – Hosting und Server-Logs",
+        "text": "Beim Aufruf der Website werden technisch erforderliche Daten verarbeitet (z. B. IP-Adresse, Zeitpunkt, angeforderte URL, User-Agent, Referrer). Rechtsgrundlage: berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO) an sicherem Betrieb. Speicherdauer: üblicherweise wenige Wochen, abhängig vom Hosting-Anbieter."
+      },
+      {
+        "heading": "5. Website – Cookies und Spracheinstellung",
+        "text": "Wir setzen ein essentielles Cookie (imanigo-lang) zur Speicherung Ihrer Sprachwahl. Es ist für den Betrieb erforderlich. Details: /de/cookie-preferences. Es werden keine Analyse- oder Marketing-Cookies ohne Ihre Einwilligung eingesetzt."
+      },
+      {
+        "heading": "6. Website – Kontakt per E-Mail",
+        "text": "Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen übermittelten Daten zur Bearbeitung der Anfrage. Rechtsgrundlage: Vertrag/Anbahnung (Art. 6 Abs. 1 lit. b DSGVO) oder berechtigtes Interesse (lit. f). Speicherdauer: bis Abschluss der Kommunikation, längstens gemäß gesetzlicher Aufbewahrungsfristen."
+      },
+      {
+        "heading": "7. Keine automatisierte Entscheidungsfindung",
+        "text": "Wir nutzen auf der Website keine Profilbildung mit rechtlicher Wirkung im Sinne von Art. 22 DSGVO."
+      },
+      {
+        "heading": "8. Mobile Apps – Überblick",
+        "text": "PlanYourMeals hilft Ihnen, Vorräte, Rezepte und Einkaufslisten zu verwalten. Je nach Nutzung können folgende Kategorien anfallen:\n• Kontodaten (E-Mail, Anzeigename),\n• Inhaltsdaten (Lebensmittel, Rezepte, Listen, Planungen),\n• Geräte- und App-Metadaten (App-Version, Sprache, Fehlerprotokolle),\n• optional: Push-Token, Abo- und Kaufdaten über Apple/Google.\n\nRechtsgrundlagen: Vertrag (Art. 6 Abs. 1 lit. b), Einwilligung (lit. a) wo erforderlich, berechtigtes Interesse an Stabilität und Sicherheit (lit. f)."
+      },
+      {
+        "heading": "9. Mobile Apps – Konto und Synchronisation",
+        "text": "Mit einem Konto können Daten geräteübergreifend synchronisiert werden (z. B. Familien-Sharing). Sie können Ihr Konto in der App löschen oder uns per E-Mail zur Löschung auffordern. Wir löschen personenbezogene Daten, sobald keine gesetzlichen Aufbewahrungspflichten entgegenstehen."
+      },
+      {
+        "heading": "10. Mobile Apps – In-App-Käufe und Abonnements",
+        "text": "Kostenpflichtige Funktionen werden über den Apple App Store bzw. Google Play abgewickelt. Zahlungsdaten verarbeiten wir nicht direkt; es gelten die Datenschutzhinweise von Apple und Google. Wir erhalten ggf. Transaktions-IDs und Abo-Status zur Bereitstellung von Premium-Funktionen."
+      },
+      {
+        "heading": "11. Mobile Apps – KI-gestützte Funktionen",
+        "text": "Sofern Sie KI-gestützte Planungs- oder Vorschlagsfunktionen nutzen, können ausgewählte Eingaben (z. B. Vorrat, Präferenzen) an einen Auftragsverarbeiter übermittelt werden, um Vorschläge zu erzeugen. Nutzen Sie diese Funktionen nur, wenn Sie damit einverstanden sind. Details zu Anbietern ergänzen wir bei Aktivierung in der App."
+      },
+      {
+        "heading": "12. Auftragsverarbeiter und Drittanbieter",
+        "text": "Wir setzen Dienstleister für Hosting, Authentifizierung, Speicherung, Fehleranalyse und Push-Benachrichtigungen ein (z. B. Cloud-Infrastruktur, Apple Push Notification Service, Firebase/Google, sofern genutzt). Mit Auftragsverarbeitern schließen wir Verträge gemäß Art. 28 DSGVO. Eine Übermittlung in Drittländer erfolgt nur mit geeigneten Garantien (z. B. Standardvertragsklauseln)."
+      },
+      {
+        "heading": "13. Speicherdauer",
+        "text": "Personenbezogene Daten werden nur so lange gespeichert, wie es für den jeweiligen Zweck erforderlich ist oder gesetzliche Fristen bestehen. Backups werden in regelmäßigen Zyklen überschrieben."
+      },
+      {
+        "heading": "14. Ihre Rechte",
+        "text": "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO) sowie das Recht, eine Einwilligung zu widerrufen. Beschwerden können Sie bei der zuständigen Aufsichtsbehörde einreichen, z. B. Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)."
+      },
+      {
+        "heading": "15. Kinder",
+        "text": "Unsere Apps richten sich nicht an Kinder unter 16 Jahren ohne Zustimmung der Erziehungsberechtigten. Wir erfassen wissentlich keine Daten von Minderjährigen ohne entsprechende Berechtigung."
+      },
+      {
+        "heading": "16. Änderungen",
+        "text": "Stand: Juni 2026. Wir passen diese Erklärung an, wenn sich Rechtslage oder Funktionen ändern. Die aktuelle Fassung ist unter imanigo.de/de/datenschutz bzw. /en/datenschutz abrufbar."
+      }
+    ]
+  },
+  {
+    "_id": "legal-nutzungsbedingungen-de",
+    "_type": "legalPage",
+    "locale": "de",
+    "slug": { "current": "nutzungsbedingungen" },
+    "title": "Nutzungsbedingungen",
+    "eyebrow": "Rechtliches",
+    "intro": "Allgemeine Bedingungen für die Nutzung unserer Website und der App PlanYourMeals (iOS/Android).",
+    "description": "Nutzungsbedingungen und Endnutzer-Lizenz für IMANIGO-Dienste.",
+    "body": [
+      {
+        "heading": "1. Geltungsbereich",
+        "text": "Diese Nutzungsbedingungen regeln die Nutzung von imanigo.de sowie der mobilen Anwendung PlanYourMeals (PYM) und der zugehörigen Web-App. Abweichende Bedingungen des Nutzers gelten nur, wenn wir ihnen ausdrücklich schriftlich zustimmen."
+      },
+      {
+        "heading": "2. Anbieter",
+        "text": "IMANIGO GmbH, Adalbert-Stifter-Str. 32, 83301 Traunreut, Deutschland. Kontakt: contact@imanigo.de. Impressum: /de/impressum."
+      },
+      {
+        "heading": "3. Leistungsbeschreibung Website",
+        "text": "Die Website informiert über Leistungen von IMANIGO (Software, Fahrzeugtransfer, Content). Sie stellt keine verbindlichen Angebote dar, sofern nicht ausdrücklich anders gekennzeichnet."
+      },
+      {
+        "heading": "4. PlanYourMeals – Leistung",
+        "text": "PYM unterstützt Sie bei der Verwaltung von Vorräten, Rezepten, Mahlzeitenplanung und Einkaufslisten. Funktionsumfang und Verfügbarkeit können je nach Version, Gerät und Abo-Status variieren. Wir entwickeln die App kontinuierlich weiter."
+      },
+      {
+        "heading": "5. Registrierung und Konto",
+        "text": "Für bestimmte Funktionen ist ein Konto erforderlich. Sie sind verpflichtet, wahrheitsgemäße Angaben zu machen und Zugangsdaten geheim zu halten. Missbrauch melden Sie uns umgehend."
+      },
+      {
+        "heading": "6. Kostenlose und kostenpflichtige Funktionen",
+        "text": "Grundfunktionen können kostenlos sein. Premium-Funktionen (z. B. Familien-Sharing, erweiterte Planung) können kostenpflichtig sein. Preise und Laufzeiten werden vor dem Kauf in App Store bzw. Google Play angezeigt."
+      },
+      {
+        "heading": "7. Abonnements, Kündigung und Widerruf",
+        "text": "Abonnements werden über Apple oder Google abgeschlossen und verwaltet. Kündigung und Erstattung richten sich nach den Richtlinien des jeweiligen Stores. Verbraucher in der EU haben ggf. ein Widerrufsrecht bei digitalen Inhalten gemäß gesetzlicher Vorgaben; Details werden im Kaufdialog des Stores ausgewiesen."
+      },
+      {
+        "heading": "8. Nutzungspflichten",
+        "text": "Sie dürfen die Dienste nicht missbräuchlich nutzen, z. B. durch unbefugten Zugriff, Störung des Betriebs, Verbreitung rechtswidriger Inhalte oder Umgehung technischer Schutzmaßnahmen. Inhalte, die Sie speichern, müssen rechtmäßig sein."
+      },
+      {
+        "heading": "9. Verfügbarkeit",
+        "text": "Wir bemühen uns um hohe Verfügbarkeit, garantieren jedoch keinen unterbrechungsfreien Betrieb. Wartungsfenster und höhere Gewalt können zu Einschränkungen führen."
+      },
+      {
+        "heading": "10. Geistiges Eigentum",
+        "text": "Software, Design, Texte und Marken bleiben Eigentum der IMANIGO GmbH oder ihrer Lizenzgeber. Ihnen wird ein einfaches, nicht übertragbares Nutzungsrecht für den vertraglichen Zweck eingeräumt."
+      },
+      {
+        "heading": "11. Haftung",
+        "text": "Wir haften unbeschränkt bei Vorsatz und grober Fahrlässigkeit sowie bei Schäden aus der Verletzung von Leben, Körper oder Gesundheit. Im Übrigen haften wir nur bei Verletzung wesentlicher Vertragspflichten, begrenzt auf den vorhersehbaren Schaden. Für von Nutzern hinterlegte Rezepte und Planungen übernehmen wir keine Gewähr für Richtigkeit oder Eignung (z. B. Allergien, Ernährung)."
+      },
+      {
+        "heading": "12. Änderungen der Bedingungen",
+        "text": "Wir können diese Bedingungen anpassen. Über wesentliche Änderungen informieren wir in der App oder per E-Mail. Widersprechen Sie nicht innerhalb von 30 Tagen nach Mitteilung, gelten die neuen Bedingungen als angenommen, sofern zulässig."
+      },
+      {
+        "heading": "13. Schlussbestimmungen",
+        "text": "Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts. Gerichtsstand für Kaufleute ist, soweit zulässig, der Sitz der Gesellschaft. Sollten einzelne Klauseln unwirksam sein, bleibt der Rest wirksam. Stand: Juni 2026."
+      }
+    ]
+  },
+  {
+    "_id": "legal-cookie-preferences-de",
+    "_type": "legalPage",
+    "locale": "de",
+    "slug": { "current": "cookie-preferences" },
+    "title": "Cookie-Einstellungen",
+    "eyebrow": "Rechtliches",
+    "intro": "Welche Cookies imanigo.de verwendet und wie Sie Ihre Spracheinstellung steuern.",
+    "description": "Cookie- und Speicher-Informationen für die Website imanigo.de.",
+    "body": [
+      {
+        "heading": "Übersicht",
+        "text": "Wir verwenden auf imanigo.de nur technisch notwendige Cookies. Es gibt derzeit keine optionalen Analyse- oder Marketing-Cookies auf dieser Website."
+      },
+      {
+        "heading": "imanigo-lang (essentiell)",
+        "text": "Zweck: Speicherung Ihrer gewählten Sprache (de/en).\nSpeicherdauer: 1 Jahr\nRechtsgrundlage: berechtigtes Interesse / technische Erforderlichkeit\nAnbieter: IMANIGO GmbH"
+      },
+      {
+        "heading": "Keine Tracking-Cookies",
+        "text": "Wir setzen keine Cookies von Drittanbietern für Werbung oder Reichweitenmessung ein, solange Sie dem nicht ausdrücklich zustimmen."
+      },
+      {
+        "heading": "Apps (iOS/Android)",
+        "text": "In unseren mobilen Apps können lokale Speicher (z. B. Sitzungs-Token, Einstellungen) verwendet werden. Details finden Sie in der Datenschutzerklärung unter /de/datenschutz."
+      },
+      {
+        "heading": "Browser-Einstellungen",
+        "text": "Sie können Cookies in Ihrem Browser löschen oder blockieren. Das kann die Sprachwahl auf der Website zurücksetzen."
+      }
+    ]
+  },
+  {
+    "_id": "legal-impressum-en",
+    "_type": "legalPage",
+    "locale": "en",
+    "slug": { "current": "impressum" },
+    "title": "Legal notice",
+    "eyebrow": "Legal",
+    "intro": "Mandatory provider information for this website and our mobile apps.",
+    "description": "Legal notice of IMANIGO GmbH under German law (TMG).",
+    "body": [
+      {
+        "heading": "Provider",
+        "text": "IMANIGO GmbH\nAdalbert-Stifter-Str. 32\n83301 Traunreut\nGermany"
+      },
+      {
+        "heading": "Represented by",
+        "text": "Managing director: Lukas Hradetzky"
+      },
+      {
+        "heading": "Contact",
+        "text": "Email: contact@imanigo.de\nPhone: available on request"
+      },
+      {
+        "heading": "Commercial register",
+        "text": "Registered with the commercial register.\nRegister court: [enter register court]\nRegistration number: [enter HRB number]"
+      },
+      {
+        "heading": "VAT ID",
+        "text": "VAT identification number pursuant to Section 27a German VAT Act:\nCurrently being applied for; the number will be added here once issued by the competent tax office."
+      },
+      {
+        "heading": "Responsible for content (Section 18 (2) MStV)",
+        "text": "Lukas Hradetzky\nAdalbert-Stifter-Str. 32\n83301 Traunreut"
+      },
+      {
+        "heading": "EU dispute resolution",
+        "text": "The European Commission provides an online dispute resolution platform: https://ec.europa.eu/consumers/odr\nYou can find our email address above."
+      },
+      {
+        "heading": "Consumer dispute resolution",
+        "text": "We are not obliged and not willing to participate in dispute resolution proceedings before a consumer arbitration board unless legally required."
+      },
+      {
+        "heading": "Liability for content and links",
+        "text": "We are responsible for our own content on these pages under general law. We do not assume liability for third-party content; if we become aware of legal violations, we will remove such content promptly."
+      }
+    ]
+  },
+  {
+    "_id": "legal-datenschutz-en",
+    "_type": "legalPage",
+    "locale": "en",
+    "slug": { "current": "datenschutz" },
+    "title": "Privacy policy",
+    "eyebrow": "Legal",
+    "intro": "How we process personal data on imanigo.de and in our iOS and Android apps.",
+    "description": "Privacy policy for the IMANIGO website and mobile applications.",
+    "body": [
+      {
+        "heading": "1. Controller",
+        "text": "IMANIGO GmbH\nAdalbert-Stifter-Str. 32\n83301 Traunreut\nEmail: contact@imanigo.de\n\nController within the meaning of the GDPR for this website and our published mobile apps (e.g. PlanYourMeals)."
+      },
+      {
+        "heading": "2. Scope",
+        "text": "This policy applies to:\n• the website imanigo.de (DE/EN),\n• the PlanYourMeals (PYM) mobile apps for iOS and Android,\n• the related web app at planyourmeals.de where the same accounts are used.\n\nApp-specific notes are marked in section 8."
+      },
+      {
+        "heading": "3. Privacy contact",
+        "text": "Please send privacy requests to contact@imanigo.de with the subject line “Privacy”. We usually respond within 30 days."
+      },
+      {
+        "heading": "4. Website – hosting and server logs",
+        "text": "When you visit the website, technically necessary data is processed (e.g. IP address, timestamp, requested URL, user agent, referrer). Legal basis: legitimate interest (Art. 6(1)(f) GDPR) in secure operation. Retention: typically a few weeks, depending on the hosting provider."
+      },
+      {
+        "heading": "5. Website – cookies and language",
+        "text": "We use one essential cookie (imanigo-lang) to store your language choice. It is required for operation. Details: /en/cookie-preferences. We do not use analytics or marketing cookies without your consent."
+      },
+      {
+        "heading": "6. Website – email contact",
+        "text": "If you contact us by email, we process the data you provide to handle your request. Legal basis: contract/pre-contract (Art. 6(1)(b) GDPR) or legitimate interest (lit. f). Retention: until the communication is concluded, subject to statutory retention periods."
+      },
+      {
+        "heading": "7. No automated decisions",
+        "text": "We do not use profiling with legal effect on the website within the meaning of Art. 22 GDPR."
+      },
+      {
+        "heading": "8. Mobile apps – overview",
+        "text": "PlanYourMeals helps you manage pantry items, recipes and shopping lists. Depending on use, the following may apply:\n• account data (email, display name),\n• content data (food items, recipes, lists, meal plans),\n• device and app metadata (app version, language, crash logs),\n• optionally: push tokens, subscription and purchase data via Apple/Google.\n\nLegal bases: contract (Art. 6(1)(b)), consent (lit. a) where required, legitimate interest in stability and security (lit. f)."
+      },
+      {
+        "heading": "9. Mobile apps – account and sync",
+        "text": "With an account, data can be synced across devices (e.g. family sharing). You can delete your account in the app or ask us by email. We delete personal data once no statutory retention obligations apply."
+      },
+      {
+        "heading": "10. Mobile apps – in-app purchases",
+        "text": "Paid features are processed via the Apple App Store or Google Play. We do not process payment card data directly; Apple’s and Google’s privacy policies apply. We may receive transaction IDs and subscription status to provide premium features."
+      },
+      {
+        "heading": "11. Mobile apps – AI features",
+        "text": "If you use AI-assisted planning or suggestions, selected inputs (e.g. pantry, preferences) may be sent to a processor to generate suggestions. Only use these features if you agree. We will name providers in the app when such features are enabled."
+      },
+      {
+        "heading": "12. Processors and third parties",
+        "text": "We use providers for hosting, authentication, storage, error reporting and push notifications (e.g. cloud infrastructure, Apple Push Notification Service, Firebase/Google where used). We conclude data processing agreements under Art. 28 GDPR. Transfers to third countries only occur with appropriate safeguards (e.g. standard contractual clauses)."
+      },
+      {
+        "heading": "13. Retention",
+        "text": "Personal data is stored only as long as necessary for the purpose or required by law. Backups are rotated on a regular schedule."
+      },
+      {
+        "heading": "14. Your rights",
+        "text": "You have the right of access, rectification, erasure, restriction, portability and objection (Arts. 15–21 GDPR), and to withdraw consent. You may lodge a complaint with a supervisory authority, e.g. the Bavarian Data Protection Authority (BayLDA)."
+      },
+      {
+        "heading": "15. Children",
+        "text": "Our apps are not directed at children under 16 without parental consent. We do not knowingly collect data from minors without appropriate permission."
+      },
+      {
+        "heading": "16. Changes",
+        "text": "Last updated: June 2026. We update this policy when legal requirements or features change. The current version is available at imanigo.de/en/datenschutz."
+      }
+    ]
+  },
+  {
+    "_id": "legal-nutzungsbedingungen-en",
+    "_type": "legalPage",
+    "locale": "en",
+    "slug": { "current": "nutzungsbedingungen" },
+    "title": "Terms of use",
+    "eyebrow": "Legal",
+    "intro": "General terms for using our website and the PlanYourMeals app (iOS/Android).",
+    "description": "Terms of use and end-user licence for IMANIGO services.",
+    "body": [
+      {
+        "heading": "1. Scope",
+        "text": "These terms govern use of imanigo.de, the PlanYourMeals (PYM) mobile apps and the related web app. Your terms apply only if we expressly agree in writing."
+      },
+      {
+        "heading": "2. Provider",
+        "text": "IMANIGO GmbH, Adalbert-Stifter-Str. 32, 83301 Traunreut, Germany. Contact: contact@imanigo.de. Legal notice: /en/impressum."
+      },
+      {
+        "heading": "3. Website services",
+        "text": "The website provides information about IMANIGO services (software, vehicle transfer, content). It does not constitute binding offers unless expressly stated."
+      },
+      {
+        "heading": "4. PlanYourMeals – service",
+        "text": "PYM helps you manage pantry items, recipes, meal planning and shopping lists. Features and availability may vary by version, device and subscription status. We continuously improve the app."
+      },
+      {
+        "heading": "5. Registration and account",
+        "text": "Some features require an account. You must provide accurate information and keep credentials confidential. Report misuse immediately."
+      },
+      {
+        "heading": "6. Free and paid features",
+        "text": "Core features may be free. Premium features (e.g. family sharing, advanced planning) may be paid. Prices and terms are shown in the App Store or Google Play before purchase."
+      },
+      {
+        "heading": "7. Subscriptions and cancellation",
+        "text": "Subscriptions are purchased and managed through Apple or Google. Cancellation and refunds follow the respective store policies. EU consumers may have statutory withdrawal rights for digital content as shown in the store checkout."
+      },
+      {
+        "heading": "8. User obligations",
+        "text": "You must not misuse the services, e.g. by unauthorised access, disrupting operation, distributing unlawful content or circumventing technical protections. Content you store must be lawful."
+      },
+      {
+        "heading": "9. Availability",
+        "text": "We aim for high availability but do not guarantee uninterrupted service. Maintenance and force majeure may cause limitations."
+      },
+      {
+        "heading": "10. Intellectual property",
+        "text": "Software, design, text and trademarks remain property of IMANIGO GmbH or its licensors. You receive a simple, non-transferable right of use for the contractual purpose."
+      },
+      {
+        "heading": "11. Liability",
+        "text": "We are fully liable for intent and gross negligence and for injury to life, body or health. Otherwise we are liable only for breach of essential contractual duties, limited to foreseeable damage. We do not warrant accuracy or suitability of user-stored recipes or plans (e.g. allergies, diet)."
+      },
+      {
+        "heading": "12. Changes to terms",
+        "text": "We may update these terms. We will notify you of material changes in the app or by email. If you do not object within 30 days after notice, the new terms may be deemed accepted where permitted by law."
+      },
+      {
+        "heading": "13. Final provisions",
+        "text": "German law applies, excluding the UN Convention on Contracts for the International Sale of Goods. Place of jurisdiction for merchants is our registered office where permitted. If any clause is invalid, the remainder stays effective. Last updated: June 2026."
+      }
+    ]
+  },
+  {
+    "_id": "legal-cookie-preferences-en",
+    "_type": "legalPage",
+    "locale": "en",
+    "slug": { "current": "cookie-preferences" },
+    "title": "Cookie preferences",
+    "eyebrow": "Legal",
+    "intro": "Which cookies imanigo.de uses and how your language preference is stored.",
+    "description": "Cookie and storage information for imanigo.de.",
+    "body": [
+      {
+        "heading": "Overview",
+        "text": "We only use technically necessary cookies on imanigo.de. There are currently no optional analytics or marketing cookies on this website."
+      },
+      {
+        "heading": "imanigo-lang (essential)",
+        "text": "Purpose: store your chosen language (de/en).\nRetention: 1 year\nLegal basis: legitimate interest / technical necessity\nProvider: IMANIGO GmbH"
+      },
+      {
+        "heading": "No tracking cookies",
+        "text": "We do not set third-party cookies for advertising or reach measurement unless you expressly consent."
+      },
+      {
+        "heading": "Mobile apps (iOS/Android)",
+        "text": "Our mobile apps may use local storage (e.g. session tokens, settings). See the privacy policy at /en/datenschutz."
+      },
+      {
+        "heading": "Browser settings",
+        "text": "You can delete or block cookies in your browser. This may reset your language choice on the website."
+      }
+    ]
+  }
+]

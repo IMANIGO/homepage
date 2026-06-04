@@ -6,7 +6,12 @@
     "dev": "sanity dev",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "seed": "node ./scripts/seed.js"
+    "seed": "node ./scripts/seed.js",
+    "fix-keys": "node ./scripts/fix-keys.js",
+    "fix-site-settings": "node ./scripts/fix-site-settings.js",
+    "migrate-portfolio-types": "node ./scripts/migrate-portfolio-types.js",
+    "migrate-software-types": "node ./scripts/migrate-software-types.js",
+    "migrate-publish-platforms": "node ./scripts/migrate-publish-platforms.js"
   },
   "dependencies": {
     "@sanity/code-input": "^2.36.0",

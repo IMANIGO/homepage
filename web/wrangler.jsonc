@@ -1,0 +1,32 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	"name": "imanigo-homepage",
+	"compatibility_date": "2025-04-01",
+	"vars": {
+		"NEXT_PUBLIC_SANITY_PROJECT_ID": "o4554lb2",
+		"NEXT_PUBLIC_SANITY_DATASET": "production",
+		"NEXT_PUBLIC_SANITY_API_VERSION": "2026-01-01"
+	},
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			// Self-reference service binding, the service name must match the worker name
+			// see https://opennext.js.org/cloudflare/caching
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "imanigo-homepage"
+		}
+	],
+	"images": {
+		// Enable image optimization
+		// see https://opennext.js.org/cloudflare/howtos/image
+		"binding": "IMAGES"
+	}
+}

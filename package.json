@@ -4,6 +4,8 @@
   "scripts": {
     "dev:web": "cd web && npm install && npm run dev",
     "build:web": "cd web && npm install && npm run build",
+    "build:web:cloudflare": "cd web && npm install && opennextjs-cloudflare build",
+    "deploy:web": "cd web && npm install && npm run deploy",
     "lint:web": "cd web && npm install && npm run lint",
     "dev:studio": "cd studio && npm install --legacy-peer-deps && npm run dev",
     "build:studio": "cd studio && npm install --legacy-peer-deps && npm run build"

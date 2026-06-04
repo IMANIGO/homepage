@@ -3,34 +3,111 @@
     "_id": "service-software-en",
     "_type": "servicePage",
     "locale": "en",
-    "slug": { "current": "software" },
+    "websitePage": "software",
     "title": "Software Services",
     "eyebrow": "Service",
     "intro": "I build tailored software that solves real business problems.",
-    "description": "Custom software development from discovery to delivery.",
-    "body": [{ "heading": "Approach", "text": "Analysis, prototyping, implementation and reliable delivery." }]
+    "description": "Custom software development from idea to delivery.",
+    "body": [{
+      "heading": "Project Plan",
+      "sections": [
+        {
+          "title": "Analysis & Scope",
+          "items": [
+            "Agree on idea and goal",
+            "Create project plan"
+          ]
+        },
+        {
+          "title": "Offer and Contract",
+          "items": [
+            "Create and negotiate offer",
+            "Sign contract"
+          ]
+        },
+        {
+          "title": "Design and Prototype",
+          "items": [
+            "First prototype in desired design",
+            "Discuss and adjust the prototype together"
+          ]
+        },
+        {
+          "title": "Development and Acceptance",
+          "items": [
+            "Finalize software",
+            "Regular coordination and feedback",
+            "Test and debug software",
+            "You receive access to the beta version",
+            "Official acceptance when all functions and goals are met"
+          ]
+        },
+        {
+          "title": "Support and Maintenance",
+          "items": [
+            "You receive access to the support portal",
+            "I support you in using the software with bug fixes and updates"
+          ]
+        }
+      ]
+    }],
+    "projects": [
+      {
+        "_type": "portfolioSoftwareItem",
+        "title": "PYM – PlanYourMeals",
+        "softwareTypes": ["mobile", "web"],
+        "customer": "Own product",
+        "publishPlatforms": [
+          { "label": "App Store" },
+          { "label": "Google Play" },
+          { "label": "Web", "url": "https://www.planyourmeals.de" }
+        ],
+        "visibility": "public",
+        "description": "My first project: an app to see what you have at home and what you can cook with it — recipe collection, automated shopping list, and premium features such as family sharing or AI-assisted planning.",
+        "year": "2026",
+        "tags": ["Meal planning", "Recipe book", "Shopping list", "Family accounts"]
+      }
+    ]
   },
   {
     "_id": "service-transfer-en",
     "_type": "servicePage",
     "locale": "en",
-    "slug": { "current": "transfer" },
+    "websitePage": "transfer",
     "title": "Vehicle Transfer",
     "eyebrow": "Service",
-    "intro": "I move vehicles safely across Europe with transparent logistics.",
-    "description": "Reliable vehicle transfer services with clear planning and tracking.",
-    "body": [{ "heading": "Services", "text": "Route planning, customs support, transport coordination." }]
+    "intro": "I transfer vehicles for car rental companies, fulfilling jobs through the ONLOGIST platform with digital handover reports and live tracking.",
+    "description": "Experience with rental fleet and station relocations across Europe — reliable, documented, and handled via ONLOGIST.",
+    "body": [{
+      "heading": "Offer",
+      "sections": [{
+        "title": "Services",
+        "items": [
+          "Transfers for car rental companies (station to station, fleet relocation, customer delivery)",
+          "Jobs via ONLOGIST: clear dispatch, in-app protocol, traceable handover",
+          "Documented handover with photos and condition report",
+          "Insured transport during the trip",
+          "Regular updates throughout the journey",
+          "Individual route planning and scheduling across Europe",
+          "Support with border and customs questions when needed",
+          "Multi-day tours and express deliveries",
+          "Direct bookings from businesses and private clients by arrangement"
+        ]
+      }]
+    }],
+    "projects": []
   },
   {
     "_id": "service-sponsored-en",
     "_type": "servicePage",
     "locale": "en",
-    "slug": { "current": "sponsored" },
+    "websitePage": "sponsored",
     "title": "Sponsored Content",
     "eyebrow": "Service",
     "intro": "I create authentic content and channel formats for brand storytelling.",
     "description": "Sponsored content with a calm, personal tone that builds trust.",
-    "body": [{ "heading": "What I offer", "text": "Concepts, production guidance and campaign-ready formats." }]
+    "body": [{ "heading": "What I offer", "text": "Concepts, production guidance and campaign-ready formats." }],
+    "projects": []
   },
   {
     "_id": "about-en",
@@ -51,28 +128,6 @@
     "intro": "Get in touch to start your next project.",
     "description": "Send an email or request a free call.",
     "body": [{ "heading": "Email", "text": "contact@imanigo.de" }]
-  },
-  {
-    "_id": "legal-impressum-en",
-    "_type": "legalPage",
-    "locale": "en",
-    "slug": { "current": "impressum" },
-    "title": "Imprint",
-    "eyebrow": "Legal",
-    "intro": "Legal information required under German law.",
-    "description": "Imprint details for IMANIGO.",
-    "body": [{ "heading": "Address", "text": "Adalbert-Stifter-Str. 32, 83301 Traunreut" }]
-  },
-  {
-    "_id": "legal-datenschutz-en",
-    "_type": "legalPage",
-    "locale": "en",
-    "slug": { "current": "datenschutz" },
-    "title": "Privacy Policy",
-    "eyebrow": "Legal",
-    "intro": "Information on data protection.",
-    "description": "How data is handled and protected.",
-    "body": [{ "heading": "Data Processing", "text": "Data is processed in accordance with GDPR." }]
   },
   {
     "_id": "testimonial-1-en",
@@ -99,7 +154,8 @@
     "tagline": "Digital solutions with purpose",
     "email": "contact@imanigo.de",
     "address": "Adalbert-Stifter-Str. 32, 83301 Traunreut",
-    "phoneHidden": false
+    "phone": "",
+    "phoneHidden": true
   },
   {
     "_id": "homePage-en",

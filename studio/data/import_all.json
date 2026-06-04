@@ -3,34 +3,117 @@
     "_id": "service-software-de",
     "_type": "servicePage",
     "locale": "de",
-    "slug": { "current": "software" },
+    "websitePage": "software",
     "title": "Softwareentwicklung",
     "eyebrow": "Service",
-    "intro": "Wir entwickeln maßgeschneiderte Softwarelösungen.",
+    "intro": "Ich entwickle maßgeschneiderte Softwarelösungen.",
     "description": "Individuelle Softwareentwicklung von der Idee bis zur Auslieferung.",
-    "body": [{ "heading": "Vorgehen", "text": "Analyse, Prototyping, Implementierung." }]
+    "body": [{
+      "heading": "Projektplan",
+      "sections": [
+        {
+          "title": "Analyse & Abgrenzung",
+          "items": [
+            "Idee & Ziel vereinbaren",
+            "Projektplan erstellen"
+          ]
+        },
+        {
+          "title": "Angebot und Vertrag",
+          "items": [
+            "Angebot erstellen und verhandeln",
+            "Vertrag unterschreiben"
+          ]
+        },
+        {
+          "title": "Design & Prototyp",
+          "items": [
+            "Erster Prototyp im gewünschten Design",
+            "Gemeinsam den Prototyp besprechen und anpassen"
+          ]
+        },
+        {
+          "title": "Entwicklung & Abnahme",
+          "items": [
+            "Software finalisieren",
+            "Regelmäßige Abstimmung und Feedback",
+            "Software testen und debuggen",
+            "Sie bekommen Zugriff auf die Beta-Version",
+            "Offizielle Abnahme wenn alle Funktionen und Ziele erfüllt sind"
+          ]
+        },
+        {
+          "title": "Support & Maintenance",
+          "items": [
+            "Sie bekommen Zugriff auf das Support-Portal",
+            "Ich unterstütze Sie bei der Nutzung der Software mit Fehlerbehebung und Updates"
+          ]
+        }
+      ]
+    }],
+    "projects": [
+      {
+        "_type": "portfolioSoftwareItem",
+        "title": "PYM – PlanYourMeals",
+        "softwareTypes": ["mobile", "web"],
+        "customer": "Eigene Entwicklung",
+        "publishPlatforms": [
+          { "label": "App Store" },
+          { "label": "Google Play" },
+          { "label": "Web", "url": "https://www.planyourmeals.de" }
+        ],
+        "visibility": "public",
+        "description": "Mein erstes Projekt: eine eigene App, mit der du siehst, was du zuhause hast und was du damit kochen kannst. Mit Rezeptsammlung, automatischer Einkaufsliste und Premium-Funktionen wie Familien-Sharing oder KI-gestützter Planung.",
+        "year": "2026",
+        "tags": [
+          "Lebensmittel-Überblick",
+          "Rezeptbuch",
+          "Mahlzeiten-Planung",
+          "Automatische Einkaufsliste",
+          "Familienaccounts"
+        ]
+      }
+    ]
   },
   {
     "_id": "service-transfer-de",
     "_type": "servicePage",
     "locale": "de",
-    "slug": { "current": "transfer" },
-    "title": "Technologietransfer",
+    "websitePage": "transfer",
+    "title": "Fahrzeugtransfer",
     "eyebrow": "Service",
-    "intro": "Wir unterstützen beim Transfer neuer Technologien.",
-    "description": "Transfer- und Integrationssupport für bestehende Teams.",
-    "body": [{ "heading": "Leistungen", "text": "Assessment, Integration, Coaching." }]
+    "intro": "Ich überführe Fahrzeuge für Mietwagenunternehmen – Aufträge setze ich über die Plattform ONLOGIST um, mit digitalem Übergabeprotokoll und Live-Tracking.",
+    "description": "Erfahrung mit Mietwagen-Flotten und Stationstouren in Europa – zuverlässig, dokumentiert und über ONLOGIST abgewickelt.",
+    "body": [{
+      "heading": "Angebot",
+      "sections": [{
+        "title": "Leistungen",
+        "items": [
+          "Überführungen für Mietwagenunternehmen (Station zu Station, Umlagerung, Kundenlieferung)",
+          "Aufträge über ONLOGIST: klare Dispo, App-Protokoll, nachvollziehbare Übergabe",
+          "Dokumentierte Übergabe mit Fotos und Zustandsprotokoll",
+          "Versicherter Transport während der Fahrt",
+          "Regelmäßige Updates während der Tour",
+          "Individuelle Routenplanung und Terminabstimmung in Europa",
+          "Unterstützung bei Grenz- und Zollfragen bei Bedarf",
+          "Mehrtägige Touren und Express-Überführungen",
+          "Direktaufträge von Unternehmen und Privatkunden nach Absprache"
+        ]
+      }]
+    }],
+    "projects": []
   },
   {
     "_id": "service-sponsored-de",
     "_type": "servicePage",
     "locale": "de",
-    "slug": { "current": "sponsored" },
-    "title": "Geförderte Projekte",
+    "websitePage": "sponsored",
+    "title": "Werbung auf Social Media",
     "eyebrow": "Service",
-    "intro": "Beratung zu geförderten Forschungs- und Entwicklungsprojekten.",
-    "description": "Wir helfen beim Finden und Beantragen von Förderungen.",
-    "body": [{ "heading": "Förderung", "text": "Förderberatung, Antragstellung, Projektmanagement." }]
+    "intro": "Ich werbe für Ihr Unternehmen auf Social Media.",
+    "description": "Ich erstelle Werbung für Ihr Unternehmen auf Social Media.",
+    "body": [{ "heading": "Was ich biete", "text": "Concepts, Produktionsleitung und campain-bereite Formate." }],
+    "projects": []
   },
   {
     "_id": "about-de",
@@ -51,28 +134,6 @@
     "intro": "Nimm Kontakt mit uns auf.",
     "description": "Schreibe uns eine E-Mail oder buche ein Erstgespräch.",
     "body": [{ "heading": "E-Mail", "text": "contact@imanigo.de" }]
-  },
-  {
-    "_id": "legal-impressum-de",
-    "_type": "legalPage",
-    "locale": "de",
-    "slug": { "current": "impressum" },
-    "title": "Impressum",
-    "eyebrow": "Rechtliches",
-    "intro": "Angaben gemäß § 5 TMG",
-    "description": "Impressumsdaten für IMANIGO.",
-    "body": [{ "heading": "Anschrift", "text": "Adalbert-Stifter-Str. 32, 83301 Traunreut" }]
-  },
-  {
-    "_id": "legal-datenschutz-de",
-    "_type": "legalPage",
-    "locale": "de",
-    "slug": { "current": "datenschutz" },
-    "title": "Datenschutz",
-    "eyebrow": "Rechtliches",
-    "intro": "Datenschutzhinweise",
-    "description": "Informationen zum Datenschutz.",
-    "body": [{ "heading": "Datenverarbeitung", "text": "Wir verarbeiten Daten gemäß DSGVO." }]
   },
   {
     "_id": "testimonial-1-de",
@@ -99,7 +160,8 @@
     "tagline": "Digitales mit Sinn",
     "email": "contact@imanigo.de",
     "address": "Adalbert-Stifter-Str. 32, 83301 Traunreut",
-    "phoneHidden": false
+    "phone": "",
+    "phoneHidden": true
   },
   {
     "_id": "homePage-de",

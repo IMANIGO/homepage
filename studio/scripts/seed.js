@@ -20,6 +20,28 @@ const client = createClient({
   useCdn: false
 });
 
+function randomKey() {
+  return Math.random().toString(36).slice(2, 12) + Math.random().toString(36).slice(2, 12);
+}
+
+function addMissingKeys(value) {
+  if (Array.isArray(value)) {
+    return value.map((entry) => {
+      if (entry !== null && typeof entry === 'object' && !Array.isArray(entry)) {
+        const keyed = addMissingKeys(entry);
+        return keyed._key ? keyed : { _key: randomKey(), ...keyed };
+      }
+      return entry;
+    });
+  }
+
+  if (value !== null && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([key, nested]) => [key, addMissingKeys(nested)]));
+  }
+
+  return value;
+}
+
 async function run() {
   const dataDir = path.join(__dirname, '..', 'data');
   const jsonFiles = fs.readdirSync(dataDir).filter((file) => file.endsWith('.json'));
@@ -37,8 +59,9 @@ async function run() {
 
   for (const doc of docs) {
     try {
-      console.log('Creating/Updating:', doc._id || doc._type);
-      await client.createOrReplace(doc);
+      const prepared = addMissingKeys(doc);
+      console.log('Creating/Updating:', prepared._id || prepared._type);
+      await client.createOrReplace(prepared);
       console.log('  OK');
     } catch (err) {
       console.error('  Error:', err.message || err);
