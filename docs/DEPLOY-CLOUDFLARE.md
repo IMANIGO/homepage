@@ -81,24 +81,37 @@ Wenn z. B. `planyourmeals.de` oder eine andere App schon in derselben Cloudfla
 
 ---
 
-## GitHub → automatisches Deploy (optional)
+## GitHub Actions → automatisches Deploy
 
-Im Cloudflare Dashboard: **Workers & Pages** → **Create** → **Connect to Git**:
+Bei jedem Push auf `main` (wenn sich `web/**` ändert) läuft `.github/workflows/deploy-cloudflare.yml`.
 
-| Einstellung | Wert |
-|-------------|------|
-| Repository | `IMANIGO/homepage` |
-| Root directory | `web` |
-| Build command | `npx opennextjs-cloudflare build` |
-| Deploy command | `npx wrangler deploy` |
+### Einmalig: Cloudflare API-Token anlegen
 
-**Environment variables** (Production):
+1. [Cloudflare Dashboard](https://dash.cloudflare.com) → **My Profile** → **API Tokens** → **Create Token**.
+2. Vorlage **Edit Cloudflare Workers** verwenden (oder Custom Token mit):
+   - Account → Workers Scripts → Edit
+   - Account → Workers KV / R2 / etc. nur falls später nötig
+   - Zone → Workers Routes → Edit (falls Custom Domains am Worker hängen)
+3. Token kopieren.
 
-- `NEXT_PUBLIC_SANITY_PROJECT_ID` = `o4554lb2`
-- `NEXT_PUBLIC_SANITY_DATASET` = `production`
-- `NEXT_PUBLIC_SANITY_API_VERSION` = `2026-01-01`
+### Einmalig: Secret im GitHub-Repo setzen
 
-(Diese Werte stehen auch in `web/wrangler.jsonc` unter `vars`.)
+1. https://github.com/IMANIGO/homepage → **Settings** → **Secrets and variables** → **Actions**.
+2. **New repository secret**:
+   - Name: `CLOUDFLARE_API_TOKEN`
+   - Value: der Cloudflare-Token aus dem Schritt oben
+
+Ohne dieses Secret schlägt der Workflow mit einer klaren Fehlermeldung fehl (nicht erst beim Wrangler-Aufruf).
+
+### Workflow-Details
+
+| Schritt | Wert |
+|---------|------|
+| Node.js | 22 (Wrangler 4.x verlangt mindestens v22) |
+| Build | `npx opennextjs-cloudflare build` |
+| Deploy | `npx opennextjs-cloudflare deploy` |
+
+Sanity-Variablen stehen in `web/wrangler.jsonc` unter `vars` und werden im Workflow mit Defaults gesetzt.
 
 ---
 
