@@ -1,13 +1,15 @@
 'use client';
 
+import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { preloadLeaflet } from '../../lib/leaflet-loader';
+import type { TransferRouteResponse } from '../../lib/transfer-route-api';
 import {
   formatTransferRouteLabel,
   isTransferRouteComplete,
   normalizeTourType,
   type TourType
 } from '../../lib/transfer-route';
-
 const TransferRouteMap = dynamic(() => import('./TransferRouteMap').then((mod) => mod.TransferRouteMap), {
   ssr: false,
   loading: () => <div className="h-36 w-full animate-pulse rounded-xl border border-white/15 bg-slate-100 sm:h-32 sm:w-44" />
@@ -35,13 +37,12 @@ type ProjectCardProps = {
   routeVia?: string;
   routeTo?: string;
   vehicleModel?: string;
-  imageUrl?: string;
-  imageAlt?: string;
   year?: string;
   tags?: string[];
   publishedOn?: string;
   url?: string;
   showRouteMap?: boolean;
+  routeData?: TransferRouteResponse;
 };
 
 export function ProjectCard({
@@ -55,19 +56,24 @@ export function ProjectCard({
   routeVia,
   routeTo,
   vehicleModel,
-  imageUrl,
-  imageAlt,
   year,
   tags,
   publishedOn,
   url,
-  showRouteMap = false
+  showRouteMap = false,
+  routeData
 }: ProjectCardProps) {
   const features = tags?.filter(Boolean) ?? [];
   const normalizedTourType = normalizeTourType(tourType);
   const hasRoute = Boolean(
     showRouteMap && isTransferRouteComplete(normalizedTourType, routeFrom, routeVia, routeTo)
   );
+
+  useEffect(() => {
+    if (hasRoute) {
+      preloadLeaflet();
+    }
+  }, [hasRoute]);
   const routeDisplay = hasRoute
     ? formatTransferRouteLabel(normalizedTourType, routeFrom!, routeVia, routeTo!, tourTypeLabels)
     : null;
@@ -77,16 +83,15 @@ export function ProjectCard({
       {year ? <span className="absolute right-6 top-6 z-10 text-sm text-slate-400">{year}</span> : null}
       <div className="flex flex-col gap-4 pr-10 sm:flex-row">
         {hasRoute && routeDisplay ? (
-          <TransferRouteMap
-            tourType={normalizedTourType}
-            routeFrom={routeFrom!}
-            routeVia={routeVia}
-            routeTo={routeTo!}
-            routePathLabel={routeDisplay.path}
-          />
-        ) : imageUrl ? (
-          <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white/5">
-            <img src={imageUrl} alt={imageAlt ?? title} className="h-full w-full object-cover" loading="lazy" />
+          <div className="w-full shrink-0 sm:w-44">
+            <TransferRouteMap
+              tourType={normalizedTourType}
+              routeFrom={routeFrom!}
+              routeVia={routeVia}
+              routeTo={routeTo!}
+              routePathLabel={routeDisplay.path}
+              prefetchedRoute={routeData}
+            />
           </div>
         ) : null}
 

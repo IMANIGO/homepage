@@ -3,11 +3,12 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useMemo, useTransition } from 'react';
 import { saveScrollPosition } from './ScrollRestoration';
+import { FlagIcon } from './FlagIcon';
 
 const locales = [
-  { code: 'de', label: 'DE', emoji: '🇩🇪' },
-  { code: 'en', label: 'EN', emoji: '🇬🇧' }
-] as const;
+  { code: 'de' as const, name: 'Deutsch' },
+  { code: 'en' as const, name: 'English' }
+];
 
 export function LanguageSwitcher({ lang }: { lang: 'de' | 'en' }) {
   const router = useRouter();
@@ -36,13 +37,14 @@ export function LanguageSwitcher({ lang }: { lang: 'de' | 'en' }) {
         <button
           key={locale.code}
           type="button"
-          className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-semibold transition sm:px-3 sm:text-sm ${lang === locale.code ? 'bg-accent text-slate-950' : 'text-white/80 hover:text-white'}`}
+          className={`inline-flex items-center gap-2 rounded-full px-2.5 py-1.5 text-xs font-semibold transition sm:px-3 sm:text-sm ${lang === locale.code ? 'bg-accent text-slate-950' : 'text-white/80 hover:text-white'}`}
           aria-pressed={lang === locale.code}
-          aria-label={`Switch language to ${locale.code}`}
+          aria-label={`${locale.name}${lang === locale.code ? ' (aktiv)' : ''}`}
+          title={locale.name}
           onClick={() => changeLanguage(locale.code)}
         >
-          <span aria-hidden="true">{locale.emoji}</span>
-          {locale.label}
+          <FlagIcon locale={locale.code} />
+          <span className="hidden sm:inline">{locale.name}</span>
         </button>
       ))}
     </div>

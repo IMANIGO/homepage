@@ -1,11 +1,11 @@
-import { getDictionary } from '../../lib/i18n';
-import { getHomePage } from '../../lib/sanity';
-import { filterTestimonials, hasSeedMetrics, resolveSlug } from '../../lib/cms-helpers';
-import { ServiceCard } from '../components/ServiceCard';
-import { SectionHeading } from '../components/SectionHeading';
-import { MetricCard } from '../components/MetricCard';
-import { QuoteCard } from '../components/QuoteCard';
-import { getRoute } from '../../lib/content';
+import { getDictionary } from '../../../lib/i18n';
+import { getHomePage } from '../../../lib/sanity';
+import { filterTestimonials, hasSeedMetrics, resolveSlug } from '../../../lib/cms-helpers';
+import { ServiceCard } from '../../components/ServiceCard';
+import { SectionHeading } from '../../components/SectionHeading';
+import { MetricCard } from '../../components/MetricCard';
+import { QuoteCard } from '../../components/QuoteCard';
+import { getRoute } from '../../../lib/content';
 
 export const revalidate = 60;
 

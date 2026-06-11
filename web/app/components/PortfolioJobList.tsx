@@ -3,6 +3,8 @@ import { normalizePublishPlatforms, type PublishPlatform } from '../../lib/publi
 import { normalizeSoftwareTypes } from '../../lib/software-types';
 import type { Locale } from '../../lib/i18n';
 import { getDictionary } from '../../lib/i18n';
+import type { TransferRouteResponse } from '../../lib/transfer-route-api';
+import { getTransferRouteKey } from '../../lib/transfer-route-prefetch';
 import { ProjectCard } from './ProjectCard';
 import { SoftwareProjectCard } from './SoftwareProjectCard';
 import { SponsoredProjectCard } from './SponsoredProjectCard';
@@ -77,11 +79,13 @@ function legacySoftwarePlatforms(project: PortfolioProject): PublishPlatform[] {
 export function PortfolioJobList({
   projects,
   lang,
-  pageSlug
+  pageSlug,
+  transferRoutes
 }: {
   projects: PortfolioProject[];
   lang: Locale;
   pageSlug: string;
+  transferRoutes?: Record<string, TransferRouteResponse>;
 }) {
   if (!projects.length) {
     return null;
@@ -143,6 +147,11 @@ export function PortfolioJobList({
           );
         }
 
+        const routeKey =
+          project.routeFrom && project.routeTo
+            ? getTransferRouteKey(project.tourType, project.routeFrom, project.routeVia, project.routeTo)
+            : '';
+
         return (
           <ProjectCard
             key={key}
@@ -161,6 +170,7 @@ export function PortfolioJobList({
             tags={project.tags}
             url={project.url}
             showRouteMap
+            routeData={routeKey ? transferRoutes?.[routeKey] : undefined}
           />
         );
       })}

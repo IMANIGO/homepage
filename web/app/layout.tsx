@@ -17,6 +17,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de" className={`${space.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://b.basemaps.cartocdn.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://a.basemaps.cartocdn.com" />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

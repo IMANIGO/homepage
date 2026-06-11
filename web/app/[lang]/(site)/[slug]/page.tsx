@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getDictionary } from '../../../lib/i18n';
-import { getPageContent, getPageSlugs } from '../../../lib/sanity';
-import { filterPortfolioProjects } from '../../../lib/cms-helpers';
-import { getRelatedSlugs, getRoute } from '../../../lib/content';
-import { buildMailto } from '../../../lib/mailto';
-import { SectionHeading } from '../../components/SectionHeading';
-import { PageSidebar } from '../../components/PageSidebar';
-import { GlowDivider } from '../../components/GlowDivider';
-import { PageBodySection } from '../../components/PageBodySection';
-import { PortfolioJobList, type PortfolioProject } from '../../components/PortfolioJobList';
-import { TransferPortfolioStats } from '../../components/TransferPortfolioStats';
+import { getDictionary } from '../../../../lib/i18n';
+import { getPageContent, getPageSlugs } from '../../../../lib/sanity';
+import { filterPortfolioProjects } from '../../../../lib/cms-helpers';
+import { getRelatedSlugs, getRoute } from '../../../../lib/content';
+import { EmailLink } from '../../../components/EmailLink';
+import { SectionHeading } from '../../../components/SectionHeading';
+import { PageSidebar } from '../../../components/PageSidebar';
+import { GlowDivider } from '../../../components/GlowDivider';
+import { PageBodySection } from '../../../components/PageBodySection';
+import { PortfolioJobList, type PortfolioProject } from '../../../components/PortfolioJobList';
+import { TransferPortfolioStats } from '../../../components/TransferPortfolioStats';
+import { prefetchTransferRoutes } from '../../../../lib/transfer-route-prefetch';
 
 export const revalidate = 60;
 
@@ -77,7 +78,6 @@ export default async function Page(props: PageProps) {
   const slug = params.slug as keyof typeof dict.pageTitles;
   const isBookCall = params.slug === 'book-call';
   const relatedSlugs = getRelatedSlugs(params.slug).filter((item) => item !== params.slug);
-  const bookCallMailto = buildMailto(dict.footer.email, dict.bookCall.mailSubject, dict.bookCall.mailBody);
   const showcaseLabels =
     params.slug === 'software'
       ? dict.softwareProjects
@@ -94,6 +94,7 @@ export default async function Page(props: PageProps) {
   const leftColumnJobs = portfolioProjects.filter((_, index) => index % 2 === 0);
   const rightColumnJobs = portfolioProjects.filter((_, index) => index % 2 === 1);
   const isTransferShowcase = params.slug === 'transfer' && hasShowcaseSection;
+  const transferRoutes = isTransferShowcase ? await prefetchTransferRoutes(portfolioProjects) : undefined;
   const transferGridClass =
     'grid gap-8 lg:grid-cols-[minmax(0,1fr)_1.5rem_minmax(0,1fr)] lg:grid-rows-[auto_auto_auto_auto] lg:items-start lg:gap-x-8';
 
@@ -155,9 +156,15 @@ export default async function Page(props: PageProps) {
                   </li>
                 ))}
               </ol>
-              <a href={bookCallMailto} className="btn-primary inline-block">
+              <EmailLink
+                email={dict.footer.email}
+                subject={dict.bookCall.mailSubject}
+                body={dict.bookCall.mailBody}
+                copyLabel={dict.cta.copyEmail}
+                copiedLabel={dict.cta.emailCopied}
+              >
                 {dict.cta.sendEmail}
-              </a>
+              </EmailLink>
             </div>
           ) : null}
         </div>
@@ -193,10 +200,20 @@ export default async function Page(props: PageProps) {
                     />
                   </div>
                   <div className="hidden lg:col-start-1 lg:row-start-4 lg:block">
-                    <PortfolioJobList projects={leftColumnJobs} lang={locale} pageSlug={params.slug} />
+                    <PortfolioJobList
+                      projects={leftColumnJobs}
+                      lang={locale}
+                      pageSlug={params.slug}
+                      transferRoutes={transferRoutes}
+                    />
                   </div>
                   <div className="hidden lg:col-start-3 lg:row-start-4 lg:block">
-                    <PortfolioJobList projects={rightColumnJobs} lang={locale} pageSlug={params.slug} />
+                    <PortfolioJobList
+                      projects={rightColumnJobs}
+                      lang={locale}
+                      pageSlug={params.slug}
+                      transferRoutes={transferRoutes}
+                    />
                   </div>
                 </>
               ) : null}

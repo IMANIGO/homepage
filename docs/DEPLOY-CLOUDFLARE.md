@@ -26,25 +26,58 @@ Vorschau-URL (Worker): https://imanigo-homepage.plain-poetry-7cf6.workers.dev
 
 ---
 
-## Domain `imanigo.de` (IONOS + Cloudflare)
+## Domain `imanigo.de` — Variante A (DNS bei Cloudflare) ✓
 
-Die Domain liegt bei **IONOS**, die Website bei **Cloudflare**. Du brauchst eine der beiden Varianten:
+Domain-Registrierung bleibt bei **IONOS**. Nur die **Nameserver** zeigen auf Cloudflare. Die Website hängt am Worker **imanigo-homepage**.
 
-### Variante A — Empfohlen: DNS bei Cloudflare
+### Schritt 1 — Zone in Cloudflare anlegen
 
-1. [Cloudflare Dashboard](https://dash.cloudflare.com) → **Add a site** → `imanigo.de`.
-2. Cloudflare zeigt **Nameserver** (z. B. `ada.ns.cloudflare.com`).
-3. Bei **IONOS**: Domain → DNS / Nameserver → auf die Cloudflare-Nameserver umstellen (kann bis 24–48 h dauern).
-4. Cloudflare → **Workers & Pages** → Worker **imanigo-homepage** → **Settings** → **Domains & Routes** → **Add Custom Domain**:
+1. [dash.cloudflare.com](https://dash.cloudflare.com) einloggen (Account: accounts@imanigo.de).
+2. **Add a site** → `imanigo.de` → Free-Plan reicht für die Marketing-Seite.
+3. Cloudflare scannt bestehende DNS-Einträge (falls schon welche da sind).
+4. Notiere die **zwei Nameserver**, z. B.:
+   - `ada.ns.cloudflare.com`
+   - `bob.ns.cloudflare.com`  
+   (bei dir können die Namen abweichen — exakt die anzeigen, die Cloudflare ausgibt.)
+
+Status bleibt **Pending**, bis Schritt 2 erledigt ist.
+
+### Schritt 2 — Nameserver bei IONOS umstellen
+
+1. [IONOS Login](https://www.ionos.de/) → **Domains & SSL** → `imanigo.de`.
+2. **Nameserver** / **DNS-Einstellungen** → **Eigene Nameserver verwenden** (nicht „IONOS Nameserver“).
+3. Beide Cloudflare-Nameserver eintragen → speichern.
+4. Warten: oft 15 Minuten bis wenige Stunden, maximal ~48 h.
+
+In Cloudflare wird die Zone dann **Active** (grüner Haken).
+
+**E-Mail (MX):** Wenn du Mail über IONOS/Microsoft nutzt, prüfe nach der Aktivierung unter Cloudflare → **DNS** → **Records**, ob MX-Einträge noch da sind. Fehlen sie, aus einem IONOS-Export oder der alten Zone wieder eintragen (gleiche Priorität/Werte wie vorher).
+
+### Schritt 3 — Custom Domain am Worker
+
+1. Cloudflare → **Workers & Pages** → Worker **imanigo-homepage**.
+2. **Settings** → **Domains & Routes** → **Add Custom Domain**.
+3. Eintragen:
    - `imanigo.de`
-   - `www.imanigo.de` (Redirect auf non-www macht die App bereits per Middleware)
+   - `www.imanigo.de`
+4. Cloudflare legt die nötigen DNS-Einträge in der Zone oft **automatisch** an. Falls nicht: in **DNS** einen Eintrag vom Typ, den Cloudflare beim Hinzufügen der Domain anzeigt (meist CNAME/AAAA für Workers).
 
-### Variante B — DNS bleibt bei IONOS
+`www` → `imanigo.de` Redirect erledigt die App in `web/middleware.ts` (301 ohne www).
 
-1. Worker **imanigo-homepage** → Custom Domain hinzufügen (Cloudflare zeigt dir die Ziel-Adresse / CNAME).
-2. Bei **IONOS** DNS-Einträge setzen, wie Cloudflare es vorschreibt (meist CNAME für `www`, für Root oft ALIAS/ANAME oder A-Record laut Cloudflare-Hinweis).
+### Schritt 4 — Testen
 
-Ohne diesen Schritt bleibt die Seite nur unter der `*.workers.dev`-URL erreichbar.
+| URL | Erwartung |
+|-----|-----------|
+| https://imanigo.de | Redirect → `/de` oder `/en` |
+| https://imanigo.de/de | Startseite |
+| https://www.imanigo.de/de | Redirect → `https://imanigo.de/de` |
+| https://imanigo-homepage.*.workers.dev/de | Bleibt als Backup-URL erreichbar |
+
+SSL-Zertifikat stellt Cloudflare automatisch aus (meist wenige Minuten nach Active).
+
+### Optional — Andere Subdomains
+
+Wenn z. B. `planyourmeals.de` oder eine andere App schon in derselben Cloudflare-Zone oder einem anderen Worker läuft: jede Subdomain separat unter **Domains & Routes** des jeweiligen Workers eintragen. `imanigo.de` betrifft nur diesen Homepage-Worker.
 
 ---
 
