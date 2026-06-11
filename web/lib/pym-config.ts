@@ -24,6 +24,18 @@ export const pymScreenshots: PymScreenshot[] = [
   // { src: '/images/pym/screenshot-3.png', altKey: 'shoppingList' },
 ];
 
+export const pymLegalSlugs = ['impressum', 'datenschutz', 'nutzungsbedingungen', 'cookie-preferences'] as const;
+
+export type PymLegalSlug = (typeof pymLegalSlugs)[number];
+
+export function isPymLegalSlug(slug: string): slug is PymLegalSlug {
+  return (pymLegalSlugs as readonly string[]).includes(slug);
+}
+
 export function getPymRoute(locale: Locale) {
   return `/${locale}/pym`;
+}
+
+export function getPymLegalRoute(locale: Locale, slug: PymLegalSlug) {
+  return `/${locale}/pym/${slug}`;
 }

@@ -240,7 +240,9 @@ export const getDictionary = (locale: Locale) => {
           playStoreSoon: 'Google Play — coming soon',
           webApp: 'Open web app'
         },
-        footerNote: 'PYM is developed by IMANIGO. Legal information about the website and apps is linked below.'
+        footerNote: 'PYM is developed by IMANIGO. Legal information about the website and apps is linked below.',
+        legalEyebrow: 'Legal',
+        backToLanding: 'Back to PYM'
       },
       bookCall: {
         title: 'Free discovery call',
@@ -486,7 +488,9 @@ export const getDictionary = (locale: Locale) => {
           playStoreSoon: 'Google Play — bald verfügbar',
           webApp: 'Web-App öffnen'
         },
-        footerNote: 'PYM wird von IMANIGO entwickelt. Rechtliche Informationen zur Website und zu den Apps findest du unten.'
+        footerNote: 'PYM wird von IMANIGO entwickelt. Rechtliche Informationen zur Website und zu den Apps findest du unten.',
+        legalEyebrow: 'Rechtliches',
+        backToLanding: 'Zurück zu PYM'
       },
       bookCall: {
         title: 'Kostenloses Erstgespräch',
