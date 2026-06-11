@@ -7,7 +7,7 @@ export type PymScreenshot = {
   altKey: string;
 };
 
-/** Store and web links — update playStore when the Android app is live. */
+/** Store and web links. Update playStore when the Android app is live. */
 export const pymLinks = {
   webApp: 'https://www.planyourmeals.de',
   appStore: 'https://apps.apple.com/app/id6758863688',
