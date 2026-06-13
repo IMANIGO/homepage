@@ -1,11 +1,15 @@
 import type { Locale } from './i18n';
 
 export type PymScreenshot = {
-  /** Path under /public, e.g. /images/pym/pantry.png */
+  /** Path under /public, e.g. /images/pym/ios/pantry.png */
   src: string;
   /** Key into dict.pym.screenshotAlts */
   altKey: string;
 };
+
+export type PymPlatform = 'ios' | 'android' | 'web';
+
+export const pymPlatforms: PymPlatform[] = ['ios', 'android', 'web'];
 
 /** Store and web links. Update playStore when the Android app is live. */
 export const pymLinks = {
@@ -15,14 +19,26 @@ export const pymLinks = {
 } as const;
 
 /**
- * Add screenshots by placing images in web/public/images/pym/
- * and listing them here (recommended size: 1170×2532 or similar phone ratio).
+ * Screenshots per platform. Place images in web/public/images/pym/{ios,android,web}/
+ * and list them here (phone: ~1170×2532, web: browser window ratio).
  */
-export const pymScreenshots: PymScreenshot[] = [
-  // { src: '/images/pym/screenshot-1.png', altKey: 'pantry' },
-  // { src: '/images/pym/screenshot-2.png', altKey: 'recipes' },
-  // { src: '/images/pym/screenshot-3.png', altKey: 'shoppingList' },
-];
+export const pymScreenshotsByPlatform: Record<PymPlatform, PymScreenshot[]> = {
+  ios: [
+    // { src: '/images/pym/ios/screenshot-1.png', altKey: 'pantry' },
+    // { src: '/images/pym/ios/screenshot-2.png', altKey: 'recipes' },
+  ],
+  android: [
+    // { src: '/images/pym/android/screenshot-1.png', altKey: 'pantry' },
+  ],
+  web: [
+    // { src: '/images/pym/web/screenshot-1.png', altKey: 'pantry' },
+  ]
+};
+
+export function getDefaultPymPlatform(): PymPlatform {
+  const withShots = pymPlatforms.find((platform) => pymScreenshotsByPlatform[platform].length > 0);
+  return withShots ?? 'ios';
+}
 
 export const pymLegalSlugs = ['impressum', 'datenschutz', 'nutzungsbedingungen', 'cookie-preferences'] as const;
 

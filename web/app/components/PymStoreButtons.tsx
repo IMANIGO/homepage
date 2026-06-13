@@ -6,14 +6,15 @@ export function PymStoreButtons({ lang, layout = 'hero' }: { lang: Locale; layou
   const dict = getDictionary(lang);
   const hasPlayStore = Boolean(pymLinks.playStore.trim());
 
-  const buttonClass =
-    layout === 'hero'
-      ? 'btn-primary w-full text-center sm:w-auto'
-      : 'btn-ghost w-full text-center sm:w-auto';
+  const primaryClass =
+    layout === 'hero' ? 'btn-primary w-full text-center sm:w-auto' : 'btn-ghost w-full text-center sm:w-auto';
+
+  const containerClass =
+    layout === 'hero' ? 'flex flex-col gap-3 sm:flex-row sm:flex-wrap' : 'flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-center';
 
   return (
-    <div className={`flex flex-col gap-3 ${layout === 'hero' ? 'sm:flex-row sm:flex-wrap' : 'sm:flex-row'}`}>
-      <a href={pymLinks.appStore} className={buttonClass} target="_blank" rel="noopener noreferrer">
+    <div className={containerClass}>
+      <a href={pymLinks.appStore} className={primaryClass} target="_blank" rel="noopener noreferrer">
         {dict.pym.cta.appStore}
       </a>
       {hasPlayStore ? (

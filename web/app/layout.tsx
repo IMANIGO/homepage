@@ -8,10 +8,7 @@ const manrope = Manrope({ subsets: ['latin'], variable: '--font-body', display: 
 export const metadata: Metadata = {
   title: 'IMANIGO – Software solutions, vehicle transfer and content creation',
   description: 'IMANIGO builds software that solves real problems, transfers vehicles across Europe, and creates trusted digital content in German and English.',
-  metadataBase: new URL('https://imanigo.de'),
-  icons: {
-    icon: '/favicon.ico'
-  }
+  metadataBase: new URL('https://imanigo.de')
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

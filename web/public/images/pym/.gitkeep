@@ -1,0 +1,2 @@
+# Platform folders: ios/, android/, web/
+# Register paths in web/lib/pym-config.ts under pymScreenshotsByPlatform
