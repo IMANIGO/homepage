@@ -128,6 +128,7 @@ export const getDictionary = (locale: Locale) => {
       },
       cta: {
         bookCall: 'Book a free call',
+        bookCallShort: 'Book call',
         contact: 'Contact me',
         learnMore: 'Read the story',
         explore: 'Explore',
@@ -224,7 +225,12 @@ export const getDictionary = (locale: Locale) => {
           title: 'A quick look inside PYM.',
           description: 'Add your own app screenshots in web/public/images/pym/ and list them in web/lib/pym-config.ts.',
           placeholder: 'Screenshot slot — add an image in pym-config.ts',
-          fallbackAlt: 'PYM app screenshot'
+          fallbackAlt: 'PYM app screenshot',
+          platformHint: 'Preview screenshots for each platform.',
+          platformIos: 'iOS',
+          platformAndroid: 'Android',
+          platformWeb: 'Web',
+          emptyForPlatform: 'No {platform} screenshots yet — add images in pym-config.ts.'
         },
         screenshotAlts: {
           pantry: 'PYM pantry overview',
@@ -376,6 +382,7 @@ export const getDictionary = (locale: Locale) => {
       },
       cta: {
         bookCall: 'Kostenloses Gespräch buchen',
+        bookCallShort: 'Gespräch buchen',
         contact: 'Kontakt aufnehmen',
         learnMore: 'Mehr erfahren',
         explore: 'Erkunden',
@@ -472,7 +479,12 @@ export const getDictionary = (locale: Locale) => {
           title: 'Ein Blick in die App.',
           description: 'Eigene Screenshots unter web/public/images/pym/ ablegen und in web/lib/pym-config.ts eintragen.',
           placeholder: 'Screenshot-Platz — Bild in pym-config.ts hinzufügen',
-          fallbackAlt: 'PYM App-Screenshot'
+          fallbackAlt: 'PYM App-Screenshot',
+          platformHint: 'Screenshots je Plattform ansehen.',
+          platformIos: 'iOS',
+          platformAndroid: 'Android',
+          platformWeb: 'Web',
+          emptyForPlatform: 'Noch keine {platform}-Screenshots — Bilder in pym-config.ts eintragen.'
         },
         screenshotAlts: {
           pantry: 'PYM Vorratsübersicht',

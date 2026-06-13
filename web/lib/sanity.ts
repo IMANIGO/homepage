@@ -87,9 +87,9 @@ export async function getPageContent(locale: Locale, slug: string) {
       return {
         title: locale === 'de' ? 'Kostenloses Erstgespräch' : 'Free discovery call',
         eyebrow: '',
-        intro: locale === 'de' ? 'Ich öffne den Dialog mit einer klaren Agenda.' : 'I open the call with a concise agenda.',
+        intro: '',
         body: [
-          { heading: locale === 'de' ? 'Ablauf' : 'How it works', text: locale === 'de' ? 'Wir klären Ziele, Budgetrahmen und nächsten Schritte.' : 'We clarify goals, budget and next steps.' }
+          { heading: locale === 'de' ? 'Ablauf' : 'How it works', text: locale === 'de' ? 'Wir klären Ziele, Budgetrahmen und die nächsten Schritte.' : 'We clarify goals, budget and next steps.' }
         ]
       };
     }
@@ -148,9 +148,9 @@ export async function getPageContent(locale: Locale, slug: string) {
     return {
       title: locale === 'de' ? 'Kostenloses Erstgespräch' : 'Free discovery call',
       eyebrow: '',
-      intro: locale === 'de' ? 'Ich öffne den Dialog mit einer klaren Agenda.' : 'I open the call with a concise agenda.',
+      intro: '',
       body: [
-        { heading: locale === 'de' ? 'Ablauf' : 'How it works', text: locale === 'de' ? 'Wir klären Ziele, Budgetrahmen und nächsten Schritte.' : 'We clarify goals, budget and next steps.' }
+        { heading: locale === 'de' ? 'Ablauf' : 'How it works', text: locale === 'de' ? 'Wir klären Ziele, Budgetrahmen und die nächsten Schritte.' : 'We clarify goals, budget and next steps.' }
       ]
     };
   }

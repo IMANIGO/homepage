@@ -1,10 +1,9 @@
 import { getDictionary } from '../../../lib/i18n';
 import { getHomePage } from '../../../lib/sanity';
-import { filterTestimonials, hasSeedMetrics, resolveSlug } from '../../../lib/cms-helpers';
+import { hasSeedMetrics, resolveSlug } from '../../../lib/cms-helpers';
 import { ServiceCard } from '../../components/ServiceCard';
 import { SectionHeading } from '../../components/SectionHeading';
 import { MetricCard } from '../../components/MetricCard';
-import { QuoteCard } from '../../components/QuoteCard';
 import { getRoute } from '../../../lib/content';
 
 export const revalidate = 60;
@@ -43,7 +42,6 @@ export default async function HomePage(props: PageProps) {
   }));
 
   const aboutText = page?.aboutSummary ?? dict.about.description;
-  const testimonials = filterTestimonials(page?.testimonials);
   const showMetrics = page?.metrics?.length > 0 && !hasSeedMetrics(page.metrics);
   const trustHighlights = showMetrics ? page.metrics : dict.trust.highlights;
   const trustPoints =
@@ -117,23 +115,9 @@ export default async function HomePage(props: PageProps) {
         </div>
       </section>
 
-      <section className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-        <div className="space-y-8">
-          <SectionHeading eyebrow={dict.trust.eyebrow} title={dict.trust.title} description={dict.trust.description} />
-          {testimonials.length > 0 ? (
-            testimonials.map((quote) => (
-              <QuoteCard
-                key={quote._id ?? quote.author}
-                quote={quote.quote ?? ''}
-                author={quote.author ?? dict.trust.fallbackAuthor}
-                company={quote.company ?? ''}
-              />
-            ))
-          ) : (
-            <QuoteCard quote={dict.trust.fallbackQuote} author={dict.trust.fallbackAuthor} company="" />
-          )}
-        </div>
-        <div className="grid gap-4">
+      <section className="space-y-8">
+        <SectionHeading eyebrow={dict.trust.eyebrow} title={dict.trust.title} description={dict.trust.description} />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {trustHighlights.map((metric: { _id?: string; label: string; value: string; detail: string }, index: number) => (
             <MetricCard key={metric._id ?? `${metric.label}-${index}`} label={metric.label} value={metric.value} detail={metric.detail} />
           ))}
