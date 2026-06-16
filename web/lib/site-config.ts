@@ -11,6 +11,10 @@ export const organization = {
     de: 'Einzelunternehmen',
     en: 'Sole proprietorship'
   },
+  tradeNameNote: {
+    de: 'Gemeldeter Firmenname „IMANIGO“, nicht im Handelsregister eingetragen (keine GmbH).',
+    en: 'Registered trade name "IMANIGO", not entered in the commercial register (not a GmbH).'
+  },
   email: 'contact@imanigo.de',
   owner: 'Lukas Imanuel Hradetzky',
   address: {

@@ -25,9 +25,12 @@ export function getOrganizationSchema(locale: Locale) {
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo-dark.png`,
     email: organization.email,
-    description: dict.meta.description,
+    description:
+      locale === 'de'
+        ? `${organization.legalForm.de} von ${organization.owner}. ${organization.tradeNameNote.de} ${dict.meta.description}`
+        : `${organization.legalForm.en} operated by ${organization.owner}. ${organization.tradeNameNote.en} ${dict.meta.description}`,
     address: postalAddress(),
-    employee: {
+    founder: {
       '@type': 'Person',
       name: organization.owner,
       jobTitle: locale === 'de' ? 'Inhaber' : 'Owner',

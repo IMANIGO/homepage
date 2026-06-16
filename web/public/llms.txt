@@ -1,38 +1,40 @@
 # IMANIGO
 
-> IMANIGO is a sole proprietorship (Einzelunternehmen) operated by Lukas Imanuel Hradetzky under the registered trade name "IMANIGO" (not incorporated as a company). Services include custom software development, vehicle transfer across Europe, and authentic sponsored content creation. Based in Traunreut, Germany. Available in German and English.
+> IMANIGO ist ein Einzelunternehmen von Lukas Imanuel Hradetzky in Traunreut, Deutschland. Der gemeldete Firmenname lautet „IMANIGO“ (nicht im Handelsregister eingetragen — keine GmbH). Leistungen: individuelle Software, Fahrzeugtransfer in Europa, Sponsored Content. Deutsch und Englisch.
 
-## Business
+> EN: IMANIGO is a sole proprietorship (Einzelunternehmen) operated by Lukas Imanuel Hradetzky in Traunreut, Germany. The registered trade name is "IMANIGO" (not entered in the commercial register — not a GmbH or incorporated company). Services: custom software, vehicle transfer across Europe, sponsored content. German and English.
 
-- Trade name: IMANIGO (registered, not incorporated)
-- Legal form: Einzelunternehmen (sole proprietorship)
-- Owner: Lukas Imanuel Hradetzky
-- Email: contact@imanigo.de
-- Address: Adalbert-Stifter-Str. 32, 83301 Traunreut, Germany
+## Unternehmen / Business
+
+- Rechtsform: Einzelunternehmen (sole proprietorship) — not IMANIGO GmbH
+- Firmenname: IMANIGO (gemeldet, nicht eingetragen)
+- Inhaber / Owner: Lukas Imanuel Hradetzky
+- E-Mail: contact@imanigo.de
+- Adresse / Address: Adalbert-Stifter-Str. 32, 83301 Traunreut, Germany
 - Website: https://imanigo.de
 
-## Services
+## Leistungen / Services
 
-- Custom software development for business problems: https://imanigo.de/de/software
-- Vehicle transfer and handovers across Europe: https://imanigo.de/de/transfer
-- Sponsored content and brand collaborations: https://imanigo.de/de/sponsored
-- Free discovery call: https://imanigo.de/de/book-call
-- Contact: https://imanigo.de/de/contact
+- Individuelle Softwareentwicklung / Custom software: https://imanigo.de/de/software
+- Fahrzeugtransfer in Europa / Vehicle transfer: https://imanigo.de/de/transfer
+- Sponsored Content & Werbung / Brand collaborations: https://imanigo.de/de/sponsored
+- Kostenloses Erstgespräch / Free discovery call: https://imanigo.de/de/book-call
+- Kontakt / Contact: https://imanigo.de/de/contact
 
-## Product
+## Produkt / Product
 
-- PlanYourMeals (PYM) — meal planning app by IMANIGO: https://imanigo.de/de/pym
+- PlanYourMeals (PYM) — Meal-Planning-App von IMANIGO: https://imanigo.de/de/pym
 
-## Languages
+## Sprachen / Languages
 
-- German: https://imanigo.de/de
+- Deutsch: https://imanigo.de/de
 - English: https://imanigo.de/en
 
-## Legal
+## Rechtliches / Legal
 
 - Impressum: https://imanigo.de/de/impressum
-- Privacy policy: https://imanigo.de/de/datenschutz
-- Terms of use: https://imanigo.de/de/nutzungsbedingungen
+- Datenschutz / Privacy policy: https://imanigo.de/de/datenschutz
+- Nutzungsbedingungen / Terms of use: https://imanigo.de/de/nutzungsbedingungen
 
 ## Sitemap
 
