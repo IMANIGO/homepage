@@ -20,17 +20,17 @@ export function getOrganizationSchema(locale: Locale) {
   return {
     '@type': 'Organization',
     '@id': organizationId,
-    name: organization.legalName,
+    name: organization.name,
     alternateName: organization.brand,
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo-dark.png`,
     email: organization.email,
     description: dict.meta.description,
     address: postalAddress(),
-    founder: {
+    employee: {
       '@type': 'Person',
-      name: organization.founder,
-      jobTitle: locale === 'de' ? 'Gründer' : 'Founder',
+      name: organization.owner,
+      jobTitle: locale === 'de' ? 'Inhaber' : 'Owner',
       worksFor: { '@id': organizationId }
     },
     knowsAbout:

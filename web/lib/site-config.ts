@@ -5,10 +5,14 @@ export const OG_IMAGE_PATH = '/images/logo-dark.png';
 export const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
 
 export const organization = {
-  legalName: 'IMANIGO GmbH',
+  name: 'IMANIGO',
   brand: 'IMANIGO',
+  legalForm: {
+    de: 'Einzelunternehmen',
+    en: 'Sole proprietorship'
+  },
   email: 'contact@imanigo.de',
-  founder: 'Lukas Hradetzky',
+  owner: 'Lukas Imanuel Hradetzky',
   address: {
     street: 'Adalbert-Stifter-Str. 32',
     postalCode: '83301',

@@ -1,11 +1,12 @@
 # IMANIGO
 
-> IMANIGO GmbH offers custom software development, vehicle transfer across Europe, and authentic sponsored content creation. Based in Traunreut, Germany. Services are available in German and English.
+> IMANIGO is a sole proprietorship (Einzelunternehmen) operated by Lukas Imanuel Hradetzky under the registered trade name "IMANIGO" (not incorporated as a company). Services include custom software development, vehicle transfer across Europe, and authentic sponsored content creation. Based in Traunreut, Germany. Available in German and English.
 
-## Company
+## Business
 
-- Name: IMANIGO GmbH (brand: IMANIGO)
-- Founder: Lukas Hradetzky
+- Trade name: IMANIGO (registered, not incorporated)
+- Legal form: Einzelunternehmen (sole proprietorship)
+- Owner: Lukas Imanuel Hradetzky
 - Email: contact@imanigo.de
 - Address: Adalbert-Stifter-Str. 32, 83301 Traunreut, Germany
 - Website: https://imanigo.de
