@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getDictionary } from '../../../../lib/i18n';
+import { getDictionary, type Locale } from '../../../../lib/i18n';
+import { buildPageMetadata } from '../../../../lib/metadata';
 import { getPageContent, getPageSlugs } from '../../../../lib/sanity';
+import { getServiceGraph, getWebPageGraph } from '../../../../lib/structured-data';
 import { filterPortfolioProjects } from '../../../../lib/cms-helpers';
 import { getRelatedSlugs, getRoute } from '../../../../lib/content';
 import { EmailLink } from '../../../components/EmailLink';
+import { JsonLd } from '../../../components/JsonLd';
 import { SectionHeading } from '../../../components/SectionHeading';
 import { PageSidebar } from '../../../components/PageSidebar';
 import { GlowDivider } from '../../../components/GlowDivider';
@@ -32,32 +35,19 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     return {};
   }
 
-  const locale = params.lang as 'de' | 'en';
+  const locale = params.lang as Locale;
   const dict = getDictionary(locale);
   const slug = params.slug as keyof typeof dict.pageTitles;
   const pageData = await getPageContent(locale, params.slug);
   const title = pageData?.title ?? dict.pageTitles[slug] ?? dict.brand;
   const description = pageData?.intro ?? pageData?.description ?? dict.meta.description;
 
-  return {
-    title: `${dict.brand} · ${title}`,
-    description,
-    alternates: {
-      canonical: `https://imanigo.de/${locale}/${params.slug}`,
-      languages: {
-        en: `https://imanigo.de/en/${params.slug}`,
-        de: `https://imanigo.de/de/${params.slug}`
-      }
-    },
-    openGraph: {
-      title: `${dict.brand} · ${title}`,
-      description,
-      url: `https://imanigo.de/${locale}/${params.slug}`,
-      siteName: dict.brand,
-      locale: locale === 'de' ? 'de_DE' : 'en_GB',
-      type: 'website'
-    }
-  };
+  return buildPageMetadata({
+    locale,
+    path: params.slug,
+    title,
+    description
+  });
 }
 
 export default async function Page(props: PageProps) {
@@ -97,9 +87,22 @@ export default async function Page(props: PageProps) {
   const transferRoutes = isTransferShowcase ? await prefetchTransferRoutes(portfolioProjects) : undefined;
   const transferGridClass =
     'grid gap-8 lg:grid-cols-[minmax(0,1fr)_1.5rem_minmax(0,1fr)] lg:grid-rows-[auto_auto_auto_auto] lg:items-start lg:gap-x-8';
+  const pageTitle = pageData.title ?? dict.pageTitles[slug];
+  const pageDescription = pageData.intro ?? pageData.description ?? dict.meta.description;
+  const serviceSlugs = new Set(['software', 'transfer', 'sponsored']);
+  const structuredData = serviceSlugs.has(params.slug)
+    ? getServiceGraph(locale, params.slug, pageTitle, pageDescription)
+    : getWebPageGraph({
+        locale,
+        path: params.slug,
+        title: pageTitle,
+        description: pageDescription,
+        breadcrumbLabels: [dict.brand, pageTitle]
+      });
 
   return (
     <article className="space-y-10 py-10">
+      <JsonLd data={structuredData} />
       <SectionHeading
         eyebrow={pageData.eyebrow ?? dict.pageTitles[slug] ?? ''}
         title={pageData.title ?? dict.pageTitles[slug]}

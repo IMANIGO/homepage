@@ -1,8 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { preloadLeaflet } from '../../lib/leaflet-loader';
 import type { TransferRouteResponse } from '../../lib/transfer-route-api';
 import {
   formatTransferRouteLabel,
@@ -69,11 +67,6 @@ export function ProjectCard({
     showRouteMap && isTransferRouteComplete(normalizedTourType, routeFrom, routeVia, routeTo)
   );
 
-  useEffect(() => {
-    if (hasRoute) {
-      preloadLeaflet();
-    }
-  }, [hasRoute]);
   const routeDisplay = hasRoute
     ? formatTransferRouteLabel(normalizedTourType, routeFrom!, routeVia, routeTo!, tourTypeLabels)
     : null;

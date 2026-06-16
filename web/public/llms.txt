@@ -1,0 +1,38 @@
+# IMANIGO
+
+> IMANIGO GmbH offers custom software development, vehicle transfer across Europe, and authentic sponsored content creation. Based in Traunreut, Germany. Services are available in German and English.
+
+## Company
+
+- Name: IMANIGO GmbH (brand: IMANIGO)
+- Founder: Lukas Hradetzky
+- Email: contact@imanigo.de
+- Address: Adalbert-Stifter-Str. 32, 83301 Traunreut, Germany
+- Website: https://imanigo.de
+
+## Services
+
+- Custom software development for business problems: https://imanigo.de/de/software
+- Vehicle transfer and handovers across Europe: https://imanigo.de/de/transfer
+- Sponsored content and brand collaborations: https://imanigo.de/de/sponsored
+- Free discovery call: https://imanigo.de/de/book-call
+- Contact: https://imanigo.de/de/contact
+
+## Product
+
+- PlanYourMeals (PYM) — meal planning app by IMANIGO: https://imanigo.de/de/pym
+
+## Languages
+
+- German: https://imanigo.de/de
+- English: https://imanigo.de/en
+
+## Legal
+
+- Impressum: https://imanigo.de/de/impressum
+- Privacy policy: https://imanigo.de/de/datenschutz
+- Terms of use: https://imanigo.de/de/nutzungsbedingungen
+
+## Sitemap
+
+- https://imanigo.de/sitemap.xml

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
-import { getDictionary } from '../../../lib/i18n';
+import { getDictionary, type Locale } from '../../../lib/i18n';
+import { buildPageMetadata } from '../../../lib/metadata';
 import { getSiteSettings } from '../../../lib/sanity';
+import { getSiteGraph } from '../../../lib/structured-data';
+import { JsonLd } from '../../components/JsonLd';
 import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 import { ScrollRestoration } from '../../components/ScrollRestoration';
 import { Footer } from '../../components/Footer';
@@ -13,37 +16,26 @@ type LayoutProps = {
 
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
   const { lang } = await params;
-  const dict = getDictionary(lang as 'de' | 'en');
+  const locale = lang as Locale;
+  const dict = getDictionary(locale);
 
-  return {
-    title: `${dict.brand} · ${dict.hero.title}`,
-    description: dict.meta.description,
-    alternates: {
-      canonical: `https://imanigo.de/${lang}`,
-      languages: {
-        en: 'https://imanigo.de/en',
-        de: 'https://imanigo.de/de'
-      }
-    },
-    openGraph: {
-      title: `${dict.brand} · ${dict.hero.title}`,
-      description: dict.meta.description,
-      url: `https://imanigo.de/${lang}`,
-      siteName: dict.brand,
-      locale: lang === 'de' ? 'de_DE' : 'en_GB',
-      type: 'website'
-    }
-  };
+  return buildPageMetadata({
+    locale,
+    path: '',
+    title: dict.hero.title,
+    description: dict.meta.description
+  });
 }
 
 export default async function SiteLayout({ children, params }: LayoutProps) {
   const { lang } = await params;
-  const locale = lang as 'de' | 'en';
+  const locale = lang as Locale;
   const dict = getDictionary(locale);
   const siteSettings = await getSiteSettings(locale);
 
   return (
     <div className="min-h-screen bg-background text-white">
+      <JsonLd data={getSiteGraph(locale)} />
       <ScrollRestoration />
       <a
         href="#main-content"

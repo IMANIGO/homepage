@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { createClient } from '@sanity/client';
 import { createImageUrlBuilder } from '@sanity/image-url';
 import { getLegalDocumentId, getLegalSlugCandidates, getSanitySlugCandidates } from './cms-helpers';
@@ -49,7 +50,7 @@ function getServicePageFallback(locale: Locale, slug: string) {
   };
 }
 
-export async function getSiteSettings(locale: Locale) {
+export const getSiteSettings = cache(async (locale: Locale) => {
   if (!sanityClient) {
     return null;
   }
@@ -58,9 +59,9 @@ export async function getSiteSettings(locale: Locale) {
     `*[_type == 'siteSettings' && locale == $locale][0]{ phone, phoneHidden, email }`,
     { locale }
   );
-}
+});
 
-export async function getHomePage(locale: Locale) {
+export const getHomePage = cache(async (locale: Locale) => {
   if (!sanityClient) {
     return null;
   }
@@ -77,9 +78,9 @@ export async function getHomePage(locale: Locale) {
     }`,
     { locale }
   );
-}
+});
 
-export async function getPageContent(locale: Locale, slug: string) {
+export const getPageContent = cache(async (locale: Locale, slug: string) => {
   const legalSlugs = ['impressum', 'datenschutz', 'nutzungsbedingungen', 'cookie-preferences'];
 
   if (!sanityClient) {
@@ -156,7 +157,7 @@ export async function getPageContent(locale: Locale, slug: string) {
   }
 
   return null;
-}
+});
 
 export function getPageSlugs() {
   return ['software', 'transfer', 'sponsored', 'about', 'contact', 'impressum', 'datenschutz', 'nutzungsbedingungen', 'cookie-preferences', 'book-call'];

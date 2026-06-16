@@ -3,6 +3,8 @@ import { PymScreenshotGallery } from '../../components/PymScreenshotGallery';
 import { PymStoreButtons } from '../../components/PymStoreButtons';
 import { SectionHeading } from '../../components/SectionHeading';
 
+export const revalidate = 60;
+
 type PageProps = {
   params: Promise<{ lang: string }>;
 };

@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import { getDictionary, type Locale } from '../../../lib/i18n';
+import { buildPageMetadata } from '../../../lib/metadata';
+import { getPymSoftwareGraph } from '../../../lib/structured-data';
+import { JsonLd } from '../../components/JsonLd';
 import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 import { ScrollRestoration } from '../../components/ScrollRestoration';
 import { PymFooter } from '../../components/PymFooter';
@@ -15,25 +18,13 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
   const locale = lang as Locale;
   const dict = getDictionary(locale);
 
-  return {
+  return buildPageMetadata({
+    locale,
+    path: 'pym',
     title: dict.pym.metaTitle,
     description: dict.pym.metaDescription,
-    alternates: {
-      canonical: `https://imanigo.de/${locale}/pym`,
-      languages: {
-        en: 'https://imanigo.de/en/pym',
-        de: 'https://imanigo.de/de/pym'
-      }
-    },
-    openGraph: {
-      title: dict.pym.metaTitle,
-      description: dict.pym.metaDescription,
-      url: `https://imanigo.de/${locale}/pym`,
-      siteName: 'PYM – PlanYourMeals',
-      locale: locale === 'de' ? 'de_DE' : 'en_GB',
-      type: 'website'
-    }
-  };
+    siteName: 'PYM – PlanYourMeals'
+  });
 }
 
 export function generateStaticParams() {
@@ -47,6 +38,7 @@ export default async function PymLayout({ children, params }: LayoutProps) {
 
   return (
     <div className="min-h-screen bg-background text-white">
+      <JsonLd data={getPymSoftwareGraph(locale)} />
       <ScrollRestoration />
       <a
         href="#main-content"

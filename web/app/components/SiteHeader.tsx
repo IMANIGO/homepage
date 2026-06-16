@@ -17,7 +17,16 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: ReturnType<type
     <header className="mb-10 border-b border-white/10 pb-6">
       <div className="flex flex-nowrap items-center gap-3 sm:gap-4">
         <a href={`/${lang}`} className="logo-halo min-w-0 shrink px-1 py-0.5 md:mr-8 lg:mr-10">
-          <img src="/images/logo-dark.png" alt={dict.brand} className="h-9 w-auto max-w-[7.5rem] sm:h-10 sm:max-w-none md:h-12" width={180} height={56} />
+          <img
+            src="/images/logo-dark.png"
+            alt={dict.brand}
+            className="h-9 w-auto max-w-[7.5rem] sm:h-10 sm:max-w-none md:h-12"
+            width={180}
+            height={56}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+          />
         </a>
         <div className="relative z-10 hidden min-w-0 flex-1 md:block md:pl-1">
           <MainNav lang={lang} />

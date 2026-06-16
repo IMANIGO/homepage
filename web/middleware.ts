@@ -25,6 +25,7 @@ export function middleware(request: NextRequest) {
     pathname === '/favicon.ico' ||
     pathname === '/icon.png' ||
     pathname === '/apple-icon.png' ||
+    pathname === '/llms.txt' ||
     pathname.startsWith('/robots.txt') ||
     pathname.startsWith('/sitemap.xml');
 
@@ -35,12 +36,14 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(destination, request.url), 302);
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+  response.headers.set('x-imanigo-locale', pathname.startsWith('/en') ? 'en' : 'de');
+  return response;
 }
 
 export const config = {
   matcher: [
     '/',
-    '/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|robots.txt|sitemap.xml|images).*)'
+    '/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|llms.txt|robots.txt|sitemap.xml|images).*)'
   ]
 };
