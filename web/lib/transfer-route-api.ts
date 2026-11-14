@@ -1,3 +1,5 @@
+import { fetchDrivingRouteLine } from './osrm-line';
+
 export type RouteCoordinates = { lat: number; lng: number };
 
 export type TransferRouteResponse = {
@@ -103,24 +105,7 @@ export async function prefetchPlaces(places: string[]) {
 }
 
 async function fetchRouteGeometry(stops: RouteCoordinates[]) {
-  const path = stops.map((stop) => `${stop.lng},${stop.lat}`).join(';');
-  const url = `https://router.project-osrm.org/route/v1/driving/${path}?overview=simplified&geometries=geojson`;
-  const response = await fetch(url, { next: { revalidate: 60 * 60 * 24 * 7 } });
-
-  if (!response.ok) {
-    return [] as [number, number][];
-  }
-
-  const data = (await response.json()) as {
-    routes?: { geometry?: { coordinates: [number, number][] } }[];
-  };
-
-  const coordinates = data.routes?.[0]?.geometry?.coordinates;
-  if (!coordinates?.length) {
-    return [] as [number, number][];
-  }
-
-  return coordinates.map(([lng, lat]) => [lat, lng] as [number, number]);
+  return fetchDrivingRouteLine(stops);
 }
 
 export async function resolveTransferRoute(

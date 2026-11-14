@@ -14,6 +14,7 @@ import { getDictionary } from '../../lib/i18n';
 import type { TransferRouteResponse } from '../../lib/transfer-route-api';
 import { formatVehicleLabel } from '../../lib/vehicle-condition';
 import { enableLeafletTrackpadZoom } from '../../lib/leaflet-trackpad-zoom';
+import { fetchDrivingRouteLine, hasRoadGeometry } from '../../lib/osrm-line';
 
 type TransferPortfolioMapProps = {
   projects: TransferMapProject[];
@@ -26,7 +27,7 @@ const ACTIVE_WEIGHT = 12;
 const HIT_PIXELS = 28;
 
 function routeLine(group: TransferMapGroup): [number, number][] {
-  if (group.geometry.routeLine.length) {
+  if (hasRoadGeometry(group.geometry.routeLine)) {
     return group.geometry.routeLine;
   }
   return group.geometry.stops.map((stop) => [stop.lat, stop.lng]);
@@ -269,11 +270,31 @@ export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfol
         return;
       }
 
+      async function followRoads() {
+        for (const group of groupsRef.current) {
+          if (cancelled) {
+            return;
+          }
+          if (hasRoadGeometry(group.geometry.routeLine)) {
+            continue;
+          }
+          const road = await fetchDrivingRouteLine(group.geometry.stops);
+          if (cancelled || !hasRoadGeometry(road)) {
+            continue;
+          }
+          group.geometry.routeLine = road;
+          visualsRef.current.get(group.key)?.line.setLatLngs(road);
+          road.forEach((point) => bounds.extend(point));
+        }
+        fitAllRoutes();
+      }
+
       map.whenReady(fitAllRoutes);
       window.requestAnimationFrame(() => {
         window.requestAnimationFrame(fitAllRoutes);
       });
       fitTimer = window.setTimeout(fitAllRoutes, 280);
+      void followRoads();
 
       const onResize = () => {
         map.invalidateSize();

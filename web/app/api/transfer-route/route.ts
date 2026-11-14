@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     .split('|')
     .map((stop) => decodeURIComponent(stop.trim()))
     .filter(Boolean)
-    .slice(0, 4);
+    .slice(0, 12);
 
   if (!stops.length) {
     return Response.json({ error: 'Missing stops' }, { status: 400 });

@@ -70,12 +70,14 @@ export async function prefetchTransferRoutes(
   await prefetchPlaces([...uniquePlaces]);
 
   const includeGeometry = options?.includeGeometry ?? true;
-  const entries = await Promise.all(
-    [...routeStops.entries()].map(async ([key, stops]) => {
-      const route = await resolveTransferRoute(stops, { includeGeometry });
-      return route ? ([key, route] as const) : null;
-    })
-  );
+  const routes: Record<string, TransferRouteResponse> = {};
 
-  return Object.fromEntries(entries.filter((entry): entry is [string, TransferRouteResponse] => Boolean(entry)));
+  for (const [key, stops] of routeStops) {
+    const route = await resolveTransferRoute(stops, { includeGeometry });
+    if (route) {
+      routes[key] = route;
+    }
+  }
+
+  return routes;
 }
