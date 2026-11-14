@@ -81,7 +81,16 @@ export const getHomePage = cache(async (locale: Locale) => {
   );
 });
 
-export const getPageContent = cache(async (locale: Locale, slug: string) => {
+type PageContent = {
+  title?: string;
+  eyebrow?: string;
+  intro?: string;
+  description?: string;
+  body?: unknown;
+  projects?: Array<Record<string, unknown>>;
+} | null;
+
+export const getPageContent = cache(async (locale: Locale, slug: string): Promise<PageContent> => {
   const legalSlugs = ['impressum', 'datenschutz', 'nutzungsbedingungen', 'cookie-preferences'];
 
   if (!sanityClient) {
