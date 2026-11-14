@@ -86,7 +86,11 @@ type PageContent = {
   eyebrow?: string;
   intro?: string;
   description?: string;
-  body?: unknown;
+  body?: Array<{
+    heading: string;
+    text?: string;
+    sections?: Array<{ title: string; items?: string[] }>;
+  }>;
   projects?: Array<Record<string, unknown>>;
 } | null;
 
