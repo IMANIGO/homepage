@@ -28,7 +28,7 @@ jobs:
             exit 1
           fi
       - run: npm ci
-      - run: npx opennextjs-cloudflare build
+      - run: npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID || 'o4554lb2' }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ vars.NEXT_PUBLIC_SANITY_DATASET || 'production' }}
