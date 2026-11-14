@@ -1,3 +1,4 @@
+import { createGeocoder } from './geocode-place';
 import { fetchDrivingRouteLine } from './osrm-line';
 
 export type RouteCoordinates = { lat: number; lng: number };
@@ -7,96 +8,12 @@ export type TransferRouteResponse = {
   routeLine: [number, number][];
 };
 
-const geocodeCache = new Map<string, RouteCoordinates | null>();
 const routeCache = new Map<string, TransferRouteResponse | null>();
-let geocodeQueue: Promise<void> = Promise.resolve();
-let lastGeocodeAt = 0;
-
-const NOMINATIM_DELAY_MS = 1100;
+const { geocodePlace } = createGeocoder({ userAgent: true });
 
 type ResolveOptions = {
   includeGeometry?: boolean;
 };
-
-function normalizePlaceKey(place: string) {
-  return place.trim().toLowerCase();
-}
-
-async function waitForGeocodeSlot() {
-  const now = Date.now();
-  const waitMs = Math.max(0, NOMINATIM_DELAY_MS - (now - lastGeocodeAt));
-  if (waitMs > 0) {
-    await new Promise((resolve) => setTimeout(resolve, waitMs));
-  }
-  lastGeocodeAt = Date.now();
-}
-
-async function nominatimLookup(query: string, countrycodes?: string) {
-  await waitForGeocodeSlot();
-
-  const countryParam = countrycodes ? `&countrycodes=${countrycodes}` : '';
-  const response = await fetch(
-    `https://nominatim.openstreetmap.org/search?format=json&limit=1${countryParam}&q=${encodeURIComponent(query)}`,
-    {
-      headers: {
-        Accept: 'application/json',
-        'Accept-Language': 'de,en',
-        'User-Agent': 'IMANIGO-Website/1.0 (contact@imanigo.de; https://imanigo.de)'
-      },
-      next: { revalidate: 60 * 60 * 24 * 30 }
-    }
-  );
-
-  if (!response.ok) {
-    return null;
-  }
-
-  const results = (await response.json()) as { lat: string; lon: string }[];
-  const hit = results[0];
-  if (!hit) {
-    return null;
-  }
-
-  return { lat: Number(hit.lat), lng: Number(hit.lon) };
-}
-
-async function geocodePlace(place: string): Promise<RouteCoordinates | null> {
-  const trimmed = place.trim();
-  if (!trimmed) {
-    return null;
-  }
-
-  const cacheKey = normalizePlaceKey(trimmed);
-  if (geocodeCache.has(cacheKey)) {
-    return geocodeCache.get(cacheKey) ?? null;
-  }
-
-  const run = async () => {
-    const attempts = [
-      { query: `${trimmed}, Deutschland`, countrycodes: 'de,at,ch' },
-      { query: trimmed, countrycodes: 'de,at,ch' },
-      { query: trimmed, countrycodes: undefined }
-    ];
-
-    for (const attempt of attempts) {
-      const point = await nominatimLookup(attempt.query, attempt.countrycodes);
-      if (point) {
-        geocodeCache.set(cacheKey, point);
-        return point;
-      }
-    }
-
-    geocodeCache.set(cacheKey, null);
-    return null;
-  };
-
-  const queued = geocodeQueue.then(run, run);
-  geocodeQueue = queued.then(
-    () => undefined,
-    () => undefined
-  );
-  return queued;
-}
 
 export async function prefetchPlaces(places: string[]) {
   for (const place of places) {

@@ -29,6 +29,7 @@ const PHRASES: Array<[string, string]> = [
 
 const PLACES: Array<[string, string]> = [
   ['München Motorworld', 'Munich Motorworld'],
+  ['Florenz', 'Florence'],
   ['Unterschleißheim', 'Unterschleissheim'],
   ['Unterschleissheim', 'Unterschleissheim'],
   ['Schweitenkirchen', 'Schweitenkirchen'],

@@ -1,3 +1,5 @@
+import { createGeocoder } from './geocode-place';
+
 export type TourType = 'ab' | 'abc' | 'round';
 
 type Coordinates = { lat: number; lng: number };
@@ -69,82 +71,7 @@ function waypoints(
   }
 }
 
-const geocodeCache = new Map<string, Coordinates | null>();
-let geocodeQueue: Promise<void> = Promise.resolve();
-let lastGeocodeAt = 0;
-
-async function waitForGeocodeSlot() {
-  const now = Date.now();
-  const waitMs = Math.max(0, 1100 - (now - lastGeocodeAt));
-  if (waitMs > 0) {
-    await new Promise((resolve) => setTimeout(resolve, waitMs));
-  }
-  lastGeocodeAt = Date.now();
-}
-
-async function nominatimLookup(query: string, countrycodes?: string) {
-  await waitForGeocodeSlot();
-  const countryParam = countrycodes ? `&countrycodes=${countrycodes}` : '';
-  const response = await fetch(
-    `https://nominatim.openstreetmap.org/search?format=json&limit=1${countryParam}&q=${encodeURIComponent(query)}`,
-    {
-      headers: {
-        Accept: 'application/json',
-        'Accept-Language': 'de,en'
-      }
-    }
-  );
-
-  if (!response.ok) {
-    return null;
-  }
-
-  const results = (await response.json()) as { lat: string; lon: string }[];
-  const hit = results[0];
-  if (!hit) {
-    return null;
-  }
-
-  return { lat: Number(hit.lat), lng: Number(hit.lon) };
-}
-
-async function geocodePlace(place: string): Promise<Coordinates | null> {
-  const trimmed = place.trim();
-  if (!trimmed) {
-    return null;
-  }
-
-  const cacheKey = trimmed.toLowerCase();
-  if (geocodeCache.has(cacheKey)) {
-    return geocodeCache.get(cacheKey) ?? null;
-  }
-
-  const run = async () => {
-    const attempts = [
-      { query: `${trimmed}, Deutschland`, countrycodes: 'de,at,ch' },
-      { query: trimmed, countrycodes: 'de,at,ch' },
-      { query: trimmed, countrycodes: undefined }
-    ];
-
-    for (const attempt of attempts) {
-      const point = await nominatimLookup(attempt.query, attempt.countrycodes);
-      if (point) {
-        geocodeCache.set(cacheKey, point);
-        return point;
-      }
-    }
-
-    geocodeCache.set(cacheKey, null);
-    return null;
-  };
-
-  const queued = geocodeQueue.then(run, run);
-  geocodeQueue = queued.then(
-    () => undefined,
-    () => undefined
-  );
-  return queued;
-}
+const { geocodePlace } = createGeocoder();
 
 async function fetchDrivingStats(stops: Coordinates[]): Promise<RouteStats | null> {
   const path = stops.map((stop) => `${stop.lng},${stop.lat}`).join(';');
