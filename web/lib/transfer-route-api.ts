@@ -41,13 +41,22 @@ export async function resolveTransferRoute(
   }
 
   const coordinates: RouteCoordinates[] = [];
-  for (const stop of cleaned) {
-    const point = await geocodePlace(stop);
+  for (let index = 0; index < cleaned.length; index += 1) {
+    const point = await geocodePlace(cleaned[index]);
     if (!point) {
-      routeCache.set(cacheKey, null);
-      return null;
+      const isEndpoint = index === 0 || index === cleaned.length - 1;
+      if (isEndpoint) {
+        routeCache.set(cacheKey, null);
+        return null;
+      }
+      continue;
     }
     coordinates.push(point);
+  }
+
+  if (coordinates.length < 2) {
+    routeCache.set(cacheKey, null);
+    return null;
   }
 
   const routeLine = includeGeometry ? await fetchRouteGeometry(coordinates) : [];

@@ -7,12 +7,31 @@ export function normalizeTourType(value?: string | null): TourType {
   return 'ab';
 }
 
-export function cleanWaypointList(values?: Array<string | null | undefined> | null) {
+export function cleanWaypointList(values?: unknown) {
+  if (typeof values === 'string') {
+    return values
+      .split(/\r?\n|;/)
+      .map((value) => value.trim())
+      .filter(Boolean);
+  }
+
   if (!Array.isArray(values)) {
     return [];
   }
 
-  return values.map((value) => (typeof value === 'string' ? value.trim() : '')).filter(Boolean);
+  return values.flatMap((item) => {
+    if (typeof item === 'string') {
+      return item.trim() ? [item.trim()] : [];
+    }
+    if (item && typeof item === 'object') {
+      const record = item as Record<string, unknown>;
+      const text = [record.place, record.name, record.title, record.value, record.label].find(
+        (value) => typeof value === 'string' && value.trim()
+      );
+      return typeof text === 'string' ? [text.trim()] : [];
+    }
+    return [];
+  });
 }
 
 export function getRouteWaypointNames(tourType: TourType, routeFrom: string, routeVia: string | undefined, routeTo: string) {

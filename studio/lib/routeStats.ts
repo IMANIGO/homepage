@@ -43,11 +43,29 @@ export function roundToOneDecimal(hours: number) {
   return Math.round(hours * 10) / 10;
 }
 
-function cleanStops(values?: Array<string | null | undefined> | null) {
+function cleanStops(values?: unknown) {
+  if (typeof values === 'string') {
+    return values
+      .split(/\r?\n|;/)
+      .map((value) => value.trim())
+      .filter(Boolean);
+  }
   if (!Array.isArray(values)) {
     return [];
   }
-  return values.map((value) => (typeof value === 'string' ? value.trim() : '')).filter(Boolean);
+  return values.flatMap((item) => {
+    if (typeof item === 'string') {
+      return item.trim() ? [item.trim()] : [];
+    }
+    if (item && typeof item === 'object') {
+      const record = item as Record<string, unknown>;
+      const text = [record.place, record.name, record.value].find(
+        (value) => typeof value === 'string' && value.trim()
+      );
+      return typeof text === 'string' ? [text.trim()] : [];
+    }
+    return [];
+  });
 }
 
 function waypoints(

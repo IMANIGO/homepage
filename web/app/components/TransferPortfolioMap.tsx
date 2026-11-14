@@ -215,8 +215,11 @@ export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfol
           interactive: false
         }).addTo(map);
 
-        const markers = group.geometry.stops.map((stop, index) => {
-          const isEnd = index === group.geometry.stops.length - 1;
+        const visibleStops = [group.geometry.stops[0], group.geometry.stops[group.geometry.stops.length - 1]].filter(
+          Boolean
+        );
+        const markers = visibleStops.map((stop, index) => {
+          const isEnd = index === visibleStops.length - 1;
           return L.circleMarker([stop.lat, stop.lng], {
             radius: isEnd ? 8 : 6,
             color: group.color,
@@ -383,9 +386,8 @@ export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfol
               const vehicle = formatVehicleLabel(job.vehicleModel, job.vehicleCondition, dict.vehicleConditions);
               return (
                 <li key={job.id}>
-                  {group.typeLabel}: {group.pathLabel}
+                  {group.typeLabel}: {job.title || group.pathLabel}
                   {vehicle ? `, ${vehicle}` : ''}
-                  {job.year ? ` (${job.year})` : ''}
                 </li>
               );
             })
@@ -454,7 +456,7 @@ function RouteInfoCard({
             <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: group.color }} />
             {group.typeLabel}
           </p>
-          <p className="mt-1 text-lg font-semibold text-white">{group.pathLabel}</p>
+          <p className="mt-1 text-lg font-semibold text-white">{job.title || group.pathLabel}</p>
           <p className="mt-1 text-sm font-medium text-accent">{countLabel}</p>
         </div>
         <button
@@ -505,10 +507,10 @@ function RouteInfoCard({
             <dd className="text-slate-200">{job.brand}</dd>
           </>
         ) : null}
-        {job.publishedOn || job.year ? (
+        {job.publishedOn ? (
           <>
             <dt className="text-slate-400">{labels.published}</dt>
-            <dd className="text-slate-200">{job.publishedOn || job.year}</dd>
+            <dd className="text-slate-200">{job.publishedOn}</dd>
           </>
         ) : null}
         {typeof job.distanceKm === 'number' && job.distanceKm > 0 ? (

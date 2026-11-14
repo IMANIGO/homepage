@@ -73,7 +73,7 @@ export const getDictionary = (locale: Locale) => {
         route: 'Route',
         tourType: 'Tour type',
         features: 'Features',
-        published: 'Details',
+        published: 'Date',
         website: 'Website'
       },
       vehicleConditions: {
@@ -341,7 +341,7 @@ export const getDictionary = (locale: Locale) => {
         route: 'Route',
         tourType: 'Tourart',
         features: 'Merkmale',
-        published: 'Details',
+        published: 'Datum',
         website: 'Website'
       },
       vehicleConditions: {

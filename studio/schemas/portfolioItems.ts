@@ -54,7 +54,7 @@ export const transferJobFields = [
       type: 'array',
       of: [{ type: 'string' }],
       description:
-        'Nur für die Linienführung und die Berechnung von Strecke/Zeit. Erscheinen nicht im Namen. Reihenfolge nach dem Start.'
+        'Eine Zeile je Ort in Fahrtrichtung, z. B. Rosenheim oder MUC. Nur für die Linie, nicht im Namen.'
     },
     {
       name: 'hiddenStopsAfterVia',
@@ -110,8 +110,13 @@ export const transferJobFields = [
       description: 'e.g. ONLOGIST · Sixt München'
     },
     { name: 'description', title: 'Description', type: 'text' },
-    { name: 'year', title: 'Year', type: 'string' },
-    { name: 'publishedOn', title: 'Details', type: 'string', description: 'e.g. Mai 2026 · 240 km · 1 Tag' },
+    { name: 'year', title: 'Year', type: 'string', hidden: true },
+    {
+      name: 'publishedOn',
+      title: 'Datum',
+      type: 'string',
+      description: 'z. B. Juli 2026'
+    },
     { name: 'tags', title: 'Tags', type: 'array', of: [{ type: 'string' }] },
     { name: 'url', title: 'Link', type: 'url' }
 ];

@@ -18,7 +18,7 @@ export async function fetchDrivingRouteLine(stops: RoutePoint[]): Promise<[numbe
 
   for (const base of OSRM_ENDPOINTS) {
     try {
-      const response = await fetch(`${base}/${path}?overview=full&geometries=geojson`, {
+      const response = await fetch(`${base}/${path}?overview=full&geometries=geojson&continue_straight=false`, {
         headers: { Accept: 'application/json' }
       });
       if (!response.ok) {

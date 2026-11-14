@@ -1,3 +1,5 @@
+import { airportSearchQueries } from './airport-codes';
+
 export type GeoPoint = { lat: number; lng: number };
 
 type NominatimHit = {
@@ -28,7 +30,7 @@ const PLACE_TYPES = new Set([
 function queryVariants(place: string) {
   const trimmed = place.trim();
   const parts = trimmed.split(',').map((part) => part.trim()).filter(Boolean);
-  const variants = [trimmed];
+  const variants = [...airportSearchQueries(trimmed), trimmed];
 
   if (parts.length > 1) {
     for (let index = 1; index < parts.length; index += 1) {
@@ -39,23 +41,30 @@ function queryVariants(place: string) {
   return [...new Set(variants)].filter((variant) => variant && !COUNTRY_ONLY.test(variant));
 }
 
-function scoreHit(hit: NominatimHit) {
+function looksLikeRoadName(query: string) {
+  return /^(a|e|b|s)\d+/i.test(query.trim()) || /autobahn|motorway|autoroute/i.test(query);
+}
+
+function scoreHit(hit: NominatimHit, query: string) {
   const kind = (hit.addresstype || hit.type || '').toLowerCase();
   let score = Number(hit.importance || 0);
   if (PLACE_TYPES.has(kind) || hit.class === 'place') {
     score += 5;
   }
-  if (hit.class === 'highway' || kind === 'road' || kind === 'retail') {
+  if (hit.class === 'aeroway' || kind === 'aerodrome' || kind === 'airport') {
+    score += 8;
+  }
+  if ((hit.class === 'highway' || kind === 'road' || kind === 'retail') && !looksLikeRoadName(query)) {
     score -= 4;
   }
   return score;
 }
 
-function pickBestHit(results: NominatimHit[]) {
+function pickBestHit(results: NominatimHit[], query: string) {
   if (!results.length) {
     return null;
   }
-  return [...results].sort((left, right) => scoreHit(right) - scoreHit(left))[0] ?? null;
+  return [...results].sort((left, right) => scoreHit(right, query) - scoreHit(left, query))[0] ?? null;
 }
 
 export function createGeocoder(options: { userAgent?: boolean } = {}) {
@@ -91,7 +100,7 @@ export function createGeocoder(options: { userAgent?: boolean } = {}) {
     }
 
     const results = (await response.json()) as NominatimHit[];
-    const hit = pickBestHit(results);
+    const hit = pickBestHit(results, query);
     if (!hit) {
       return null;
     }

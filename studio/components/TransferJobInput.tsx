@@ -3,10 +3,24 @@ import { type ObjectInputProps, set } from 'sanity';
 import { computeRouteStats, formatTransferJobTitle } from '../lib/routeStats';
 
 function asStopList(value: unknown) {
+  if (typeof value === 'string') {
+    return value
+      .split(/\r?\n|;/)
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
   if (!Array.isArray(value)) {
     return [];
   }
-  return value.map((item) => (typeof item === 'string' ? item.trim() : '')).filter(Boolean);
+  return value.flatMap((item) => {
+    if (typeof item === 'string') {
+      return item.trim() ? [item.trim()] : [];
+    }
+    if (item && typeof item === 'object' && 'place' in item && typeof item.place === 'string') {
+      return item.place.trim() ? [item.place.trim()] : [];
+    }
+    return [];
+  });
 }
 
 function routeKey(value: Record<string, unknown> | undefined) {
