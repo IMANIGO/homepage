@@ -149,7 +149,7 @@ export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfol
           return false;
         }
         const closest = visual.line.closestLayerPoint(point);
-        return Boolean(closest && closest.distance <= HIT_PIXELS);
+        return Boolean(closest && closest.distanceTo(point) <= HIT_PIXELS);
       })
       .map((group) => group.key);
   }
