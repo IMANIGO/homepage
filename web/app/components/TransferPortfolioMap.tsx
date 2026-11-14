@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { CircleMarker, LeafletMouseEvent, Map as LeafletMap, Polyline } from 'leaflet';
 import { loadLeaflet } from '../../lib/leaflet-loader';
 import {
+  assignDistinctRouteColors,
   buildTransferMapGroups,
   type TransferMapGroup,
   type TransferMapJob,
@@ -289,6 +290,21 @@ export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfol
           visualsRef.current.get(group.key)?.line.setLatLngs(road);
           road.forEach((point) => bounds.extend(point));
         }
+        assignDistinctRouteColors(groupsRef.current);
+        groupsRef.current.forEach((group) => {
+          const visual = visualsRef.current.get(group.key);
+          if (!visual) {
+            return;
+          }
+          visual.line.setStyle({ color: group.color });
+          visual.markers.forEach((marker, markerIndex) => {
+            const isEnd = markerIndex === visual.markers.length - 1;
+            marker.setStyle({
+              color: group.color,
+              fillColor: isEnd ? group.color : '#ffffff'
+            });
+          });
+        });
         fitAllRoutes();
       }
 
