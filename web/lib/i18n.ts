@@ -46,7 +46,9 @@ export const getDictionary = (locale: Locale) => {
         roundTours: 'Round trips',
         vehicles: 'Vehicle models',
         kmUnit: 'km',
-        hoursUnit: 'h'
+        hoursUnit: 'h',
+        shortestKm: 'Shortest tour',
+        longestKm: 'Longest tour'
       },
       transferMap: {
         hint: 'All tours on one map. Hover a stretch of road to see every tour that passed there, then step through them.',
@@ -314,7 +316,9 @@ export const getDictionary = (locale: Locale) => {
         roundTours: 'Rundtouren',
         vehicles: 'Fahrzeugmodelle',
         kmUnit: 'km',
-        hoursUnit: 'Std.'
+        hoursUnit: 'Std.',
+        shortestKm: 'Kürzeste Strecke',
+        longestKm: 'Längste Strecke'
       },
       transferMap: {
         hint: 'Alle Touren auf einer Karte. Über einen Streckenabschnitt fahren, um alle Touren zu sehen, die dort entlanggeführt haben — dann einzeln durchblättern.',

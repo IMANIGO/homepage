@@ -1,12 +1,18 @@
 import { normalizeTourType } from './transfer-route';
 
 export type TransferPortfolioItem = {
+  title?: string | null;
   tourType?: string | null;
   vehicleModel?: string | null;
   distanceKm?: number | null;
   durationHours?: number | null;
   /** @deprecated Legacy field — treated as 8 h per day if durationHours is missing */
   durationDays?: number | null;
+};
+
+export type TransferDistanceExtreme = {
+  km: number;
+  title: string;
 };
 
 export type TransferStats = {
@@ -17,6 +23,9 @@ export type TransferStats = {
   abcTours: number;
   roundTours: number;
   vehicleCount: number;
+  vehicleModels: string[];
+  shortestKm: TransferDistanceExtreme | null;
+  longestKm: TransferDistanceExtreme | null;
   jobsWithDistance: number;
   jobsWithDuration: number;
 };
@@ -42,6 +51,8 @@ export function computeTransferStats(projects: TransferPortfolioItem[]): Transfe
   let roundTours = 0;
   let jobsWithDistance = 0;
   let jobsWithDuration = 0;
+  let shortestKm: TransferDistanceExtreme | null = null;
+  let longestKm: TransferDistanceExtreme | null = null;
 
   for (const project of projects) {
     const tourType = normalizeTourType(project.tourType);
@@ -57,6 +68,16 @@ export function computeTransferStats(projects: TransferPortfolioItem[]): Transfe
     if (typeof project.distanceKm === 'number' && project.distanceKm > 0) {
       totalKm += project.distanceKm;
       jobsWithDistance += 1;
+      const extreme = {
+        km: project.distanceKm,
+        title: project.title?.trim() || ''
+      };
+      if (!shortestKm || project.distanceKm < shortestKm.km) {
+        shortestKm = extreme;
+      }
+      if (!longestKm || project.distanceKm > longestKm.km) {
+        longestKm = extreme;
+      }
     }
 
     const hours = getJobHours(project);
@@ -79,6 +100,9 @@ export function computeTransferStats(projects: TransferPortfolioItem[]): Transfe
     abcTours,
     roundTours,
     vehicleCount: vehicles.size,
+    vehicleModels: [...vehicles].sort((left, right) => left.localeCompare(right, 'de')),
+    shortestKm,
+    longestKm,
     jobsWithDistance,
     jobsWithDuration
   };
