@@ -1,5 +1,3 @@
-import { portfolioSoftwareItem, portfolioSponsoredItem, transferJobObject } from './portfolioItems';
-
 const portfolioTypeByPage: Record<string, string> = {
   software: 'portfolioSoftwareItem',
   sponsored: 'portfolioSponsoredItem'
@@ -63,7 +61,11 @@ export default {
         'Transfer: Fahrten nur auf der deutschen Seite pflegen — Englisch wird automatisch übersetzt. Software: “Software project”. Sponsored: “Ad / campaign”.',
       hidden: ({ document }) => document?.websitePage === 'transfer' && document?.locale === 'en',
       type: 'array',
-      of: [transferJobObject, { type: 'portfolioSoftwareItem' }, { type: 'portfolioSponsoredItem' }],
+      of: [
+        { type: 'portfolioTransferItem', title: 'Transfer job' },
+        { type: 'portfolioSoftwareItem' },
+        { type: 'portfolioSponsoredItem' }
+      ],
       validation: (Rule) =>
         Rule.custom((items, context) => {
           const websitePage = context.document?.websitePage as string | undefined;

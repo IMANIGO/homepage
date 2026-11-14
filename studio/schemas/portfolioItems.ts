@@ -1,3 +1,4 @@
+import { defineType } from 'sanity';
 import { TransferJobInput } from '../components/TransferJobInput';
 
 const imageField = (title: string, description: string) => ({
@@ -115,7 +116,7 @@ export const transferJobFields = [
     { name: 'url', title: 'Link', type: 'url' }
 ];
 
-export const transferJobObject = {
+export const transferJobObject = defineType({
   name: 'portfolioTransferItem',
   type: 'object',
   title: 'Transfer job',
@@ -133,7 +134,7 @@ export const transferJobObject = {
       return { title: title || 'Transfer job', subtitle: `${tourType ?? 'ab'} · ${path}` };
     }
   }
-};
+});
 
 export const portfolioSoftwareItem = {
   name: 'portfolioSoftwareItem',
