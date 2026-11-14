@@ -1,14 +1,14 @@
 let leafletPromise: Promise<typeof import('leaflet')> | null = null;
-let cartoPreconnectAdded = false;
+let tilePreconnectAdded = false;
 
-function ensureCartoPreconnect() {
-  if (typeof document === 'undefined' || cartoPreconnectAdded) {
+function ensureTilePreconnect() {
+  if (typeof document === 'undefined' || tilePreconnectAdded) {
     return;
   }
 
-  cartoPreconnectAdded = true;
+  tilePreconnectAdded = true;
 
-  for (const origin of ['https://a.basemaps.cartocdn.com', 'https://b.basemaps.cartocdn.com']) {
+  for (const origin of ['https://a.tile.openstreetmap.org', 'https://b.tile.openstreetmap.org']) {
     const link = document.createElement('link');
     link.rel = 'preconnect';
     link.href = origin;
@@ -20,7 +20,7 @@ function ensureCartoPreconnect() {
 export function loadLeaflet() {
   if (!leafletPromise) {
     leafletPromise = (async () => {
-      ensureCartoPreconnect();
+      ensureTilePreconnect();
       await import('leaflet/dist/leaflet.css');
       return import('leaflet');
     })();

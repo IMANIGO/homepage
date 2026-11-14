@@ -5,6 +5,7 @@ import { getLegalDocumentId, getLegalSlugCandidates, getSanitySlugCandidates } f
 import { getLegalPageFallback } from './legal-fallback';
 import type { Locale } from './i18n';
 import { getDictionary } from './i18n';
+import { localizeTransferJobs } from './transfer-localize';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
@@ -110,7 +111,7 @@ export const getPageContent = cache(async (locale: Locale, slug: string) => {
           projects[]{
             _type,
             brand,customer,company,title,description,
-            tourType,routeFrom,routeVia,routeTo,vehicleModel,distanceKm,durationHours,durationDays,
+            tourType,routeFrom,routeVia,routeTo,hiddenStops,hiddenStopsAfterVia,vehicleModel,vehicleCondition,distanceKm,durationHours,durationDays,
             softwareTypes,softwareType,publishPlatforms,visibility,
             adType,publishedWhere,publishedWhen,targetAudience,
             downloadCount,rating,premiumSubscriberCount,viewCount,watchTimeHours,
@@ -119,6 +120,14 @@ export const getPageContent = cache(async (locale: Locale, slug: string) => {
         }`,
         { locale, slugs: getSanitySlugCandidates(slug) }
       )) ?? getServicePageFallback(locale, slug);
+
+    if (slug === 'transfer' && locale === 'en') {
+      const german = await getPageContent('de', 'transfer');
+      return {
+        ...page,
+        projects: localizeTransferJobs(german?.projects ?? [])
+      };
+    }
 
     return page;
   }

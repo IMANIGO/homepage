@@ -1,5 +1,5 @@
 import {
-  getRouteWaypointNames,
+  getRoutingWaypointNames,
   isTransferRouteComplete,
   normalizeTourType
 } from './transfer-route';
@@ -10,16 +10,27 @@ type TransferProject = {
   routeFrom?: string;
   routeVia?: string;
   routeTo?: string;
+  hiddenStops?: Array<string | null | undefined> | null;
+  hiddenStopsAfterVia?: Array<string | null | undefined> | null;
 };
 
 export function getTransferRouteKey(
   tourType: string | null | undefined,
   routeFrom: string,
   routeVia: string | undefined,
-  routeTo: string
+  routeTo: string,
+  hiddenStops?: Array<string | null | undefined> | null,
+  hiddenStopsAfterVia?: Array<string | null | undefined> | null
 ) {
   const normalized = normalizeTourType(tourType);
-  return getRouteWaypointNames(normalized, routeFrom, routeVia, routeTo).join('|');
+  return getRoutingWaypointNames(
+    normalized,
+    routeFrom,
+    routeVia,
+    routeTo,
+    hiddenStops,
+    hiddenStopsAfterVia
+  ).join('|');
 }
 
 export async function prefetchTransferRoutes(
@@ -34,7 +45,14 @@ export async function prefetchTransferRoutes(
       continue;
     }
 
-    const stops = getRouteWaypointNames(tourType, project.routeFrom!, project.routeVia, project.routeTo!);
+    const stops = getRoutingWaypointNames(
+      tourType,
+      project.routeFrom!,
+      project.routeVia,
+      project.routeTo!,
+      project.hiddenStops,
+      project.hiddenStopsAfterVia
+    );
     routeStops.set(stops.join('|'), stops);
   }
 

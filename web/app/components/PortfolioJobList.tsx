@@ -20,6 +20,8 @@ export type PortfolioProject = {
   routeFrom?: string;
   routeVia?: string;
   routeTo?: string;
+  hiddenStops?: string[];
+  hiddenStopsAfterVia?: string[];
   vehicleModel?: string;
   softwareTypes?: string[];
   softwareType?: string | string[];
@@ -34,6 +36,9 @@ export type PortfolioProject = {
   publishedOn?: string;
   tags?: string[];
   url?: string;
+  distanceKm?: number;
+  durationHours?: number;
+  durationDays?: number;
   downloadCount?: number;
   rating?: number;
   premiumSubscriberCount?: number;
@@ -149,7 +154,14 @@ export function PortfolioJobList({
 
         const routeKey =
           project.routeFrom && project.routeTo
-            ? getTransferRouteKey(project.tourType, project.routeFrom, project.routeVia, project.routeTo)
+            ? getTransferRouteKey(
+                project.tourType,
+                project.routeFrom,
+                project.routeVia,
+                project.routeTo,
+                project.hiddenStops,
+                project.hiddenStopsAfterVia
+              )
             : '';
 
         return (

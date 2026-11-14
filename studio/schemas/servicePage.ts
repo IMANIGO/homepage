@@ -60,7 +60,8 @@ export default {
       name: 'projects',
       title: 'Portfolio items',
       description:
-        'Transfer page: add “Transfer job”. Software page: “Software project”. Sponsored page: “Ad / campaign”.',
+        'Transfer: Fahrten nur auf der deutschen Seite pflegen — Englisch wird automatisch übersetzt. Software: “Software project”. Sponsored: “Ad / campaign”.',
+      hidden: ({ document }) => document?.websitePage === 'transfer' && document?.locale === 'en',
       type: 'array',
       of: [transferJobObject, { type: 'portfolioSoftwareItem' }, { type: 'portfolioSponsoredItem' }],
       validation: (Rule) =>

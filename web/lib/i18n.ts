@@ -48,6 +48,15 @@ export const getDictionary = (locale: Locale) => {
         kmUnit: 'km',
         hoursUnit: 'h'
       },
+      transferMap: {
+        hint: 'All tours on one map. Hover a stretch of road to see every tour that passed there, then step through them.',
+        empty: 'No mapped tours are available yet.',
+        sectionCount: '{count} tours passed this stretch',
+        tourOf: 'Tour {current} of {total}',
+        previousTour: 'Previous tour',
+        nextTour: 'Next tour',
+        close: 'Close'
+      },
       sponsoredShowcase: {
         title: 'Projects and brands',
         description: 'Campaigns and collaborations with brands I have worked with.'
@@ -66,6 +75,11 @@ export const getDictionary = (locale: Locale) => {
         features: 'Features',
         published: 'Details',
         website: 'Website'
+      },
+      vehicleConditions: {
+        new: 'new car',
+        youngUsed: 'young used car',
+        used: 'used car'
       },
       softwarePortfolio: {
         name: 'Software',
@@ -302,6 +316,15 @@ export const getDictionary = (locale: Locale) => {
         kmUnit: 'km',
         hoursUnit: 'Std.'
       },
+      transferMap: {
+        hint: 'Alle Touren auf einer Karte. Über einen Streckenabschnitt fahren, um alle Touren zu sehen, die dort entlanggeführt haben — dann einzeln durchblättern.',
+        empty: 'Es sind noch keine gemappten Touren vorhanden.',
+        sectionCount: '{count} Touren an diesem Abschnitt',
+        tourOf: 'Tour {current} von {total}',
+        previousTour: 'Vorherige Tour',
+        nextTour: 'Nächste Tour',
+        close: 'Schließen'
+      },
       sponsoredShowcase: {
         title: 'Projekte und Marken',
         description: 'Kampagnen und Kooperationen mit Marken, mit denen ich bereits zusammengearbeitet habe.'
@@ -320,6 +343,11 @@ export const getDictionary = (locale: Locale) => {
         features: 'Merkmale',
         published: 'Details',
         website: 'Website'
+      },
+      vehicleConditions: {
+        new: 'Neuwagen',
+        youngUsed: 'junger Gebrauchtwagen',
+        used: 'Gebrauchtwagen'
       },
       softwarePortfolio: {
         name: 'Software',

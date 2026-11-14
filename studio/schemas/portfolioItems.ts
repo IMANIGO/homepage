@@ -1,3 +1,5 @@
+import { TransferJobInput } from '../components/TransferJobInput';
+
 const imageField = (title: string, description: string) => ({
   name: 'image',
   title,
@@ -9,7 +11,6 @@ const imageField = (title: string, description: string) => ({
 
 /** Inline transfer jobs (no `_type`) — matches existing Sanity data and Studio behaviour before typed portfolio items. */
 export const transferJobFields = [
-    { name: 'title', title: 'Title', type: 'string', description: 'Short label for Studio (e.g. station tour).' },
     {
       name: 'tourType',
       title: 'Tour type',
@@ -27,13 +28,13 @@ export const transferJobFields = [
     },
     {
       name: 'routeFrom',
-      title: 'A · Start',
+      title: 'A · Startort',
       type: 'string',
-      description: 'Start city or station. For round trips, this is also the return point.'
+      description: 'Zuerst Start und Ziel eintragen. Für Rundfahrten ist das auch der Rückkehrort.'
     },
     {
       name: 'routeVia',
-      title: 'B · Stop (A-B-C only)',
+      title: 'B · Zwischenstopp (nur A-B-C)',
       type: 'string',
       hidden: ({ parent }) => parent?.tourType !== 'abc',
       validation: (Rule) =>
@@ -45,10 +46,62 @@ export const transferJobFields = [
           return true;
         })
     },
-    { name: 'routeTo', title: 'B / C · Destination', type: 'string' },
-    { name: 'vehicleModel', title: 'Vehicle model', type: 'string' },
-    { name: 'distanceKm', title: 'Distance (km)', type: 'number' },
-    { name: 'durationHours', title: 'Duration (hours)', type: 'number' },
+    { name: 'routeTo', title: 'B / C · Zielort', type: 'string' },
+    {
+      name: 'hiddenStops',
+      title: 'Unsichtbare Zwischenstops',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description:
+        'Nur für die Linienführung und die Berechnung von Strecke/Zeit. Erscheinen nicht im Namen. Reihenfolge nach dem Start.'
+    },
+    {
+      name: 'hiddenStopsAfterVia',
+      title: 'Unsichtbare Zwischenstops nach Stop B',
+      type: 'array',
+      of: [{ type: 'string' }],
+      hidden: ({ parent }) => parent?.tourType !== 'abc',
+      description: 'Nur A-B-C: Umwege auf dem Teilstück nach dem sichtbaren Stop B.'
+    },
+    {
+      name: 'title',
+      title: 'Name',
+      type: 'string',
+      description:
+        'Wird automatisch als „Startort - Zielort“ gesetzt, sobald die Orte stehen. Danach frei überschreibbar.'
+    },
+    {
+      name: 'distanceKm',
+      title: 'Strecke (km)',
+      type: 'number',
+      description: 'Wird aus der Fahrstrecke berechnet, bleibt manuell anpassbar.'
+    },
+    {
+      name: 'durationHours',
+      title: 'Zeit (Stunden)',
+      type: 'number',
+      description: 'Wird aus der Fahrzeit berechnet und auf eine Nachkommastelle gerundet. Manuell anpassbar.'
+    },
+    {
+      name: 'vehicleModel',
+      title: 'Vehicle model',
+      type: 'string',
+      description: 'Nur der Modellname, z. B. Ford Transit oder VW Tayron — ohne Zustand.'
+    },
+    {
+      name: 'vehicleCondition',
+      title: 'Vehicle condition',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Neuwagen', value: 'new' },
+          { title: 'Junger Gebrauchtwagen', value: 'youngUsed' },
+          { title: 'Gebrauchtwagen', value: 'used' }
+        ],
+        layout: 'radio'
+      },
+      description: 'Wird auf der Karte hinter dem Modell angezeigt und für Englisch übersetzt.'
+    },
     {
       name: 'brand',
       title: 'Customer',
@@ -63,8 +116,10 @@ export const transferJobFields = [
 ];
 
 export const transferJobObject = {
+  name: 'portfolioTransferItem',
   type: 'object',
   title: 'Transfer job',
+  components: { input: TransferJobInput },
   fields: transferJobFields,
   preview: {
     select: { title: 'title', tourType: 'tourType', routeFrom: 'routeFrom', routeVia: 'routeVia', routeTo: 'routeTo' },

@@ -1,7 +1,7 @@
 import siteSettings from './schemas/siteSettings';
 import homePage from './schemas/homePage';
 import servicePage from './schemas/servicePage';
-import { portfolioSoftwareItem, portfolioSponsoredItem } from './schemas/portfolioItems';
+import { portfolioSoftwareItem, portfolioSponsoredItem, transferJobObject } from './schemas/portfolioItems';
 import aboutPage from './schemas/aboutPage';
 import contactPage from './schemas/contactPage';
 import legalPage from './schemas/legalPage';
@@ -13,6 +13,7 @@ export const schema = [
   homePage,
   portfolioSoftwareItem,
   portfolioSponsoredItem,
+  transferJobObject,
   servicePage,
   aboutPage,
   contactPage,

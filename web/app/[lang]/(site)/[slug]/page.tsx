@@ -14,6 +14,7 @@ import { GlowDivider } from '../../../components/GlowDivider';
 import { PageBodySection } from '../../../components/PageBodySection';
 import { PortfolioJobList, type PortfolioProject } from '../../../components/PortfolioJobList';
 import { TransferPortfolioStats } from '../../../components/TransferPortfolioStats';
+import { TransferPortfolioMap } from '../../../components/TransferPortfolioMap';
 import { prefetchTransferRoutes } from '../../../../lib/transfer-route-prefetch';
 
 export const revalidate = 60;
@@ -85,8 +86,6 @@ export default async function Page(props: PageProps) {
   const rightColumnJobs = portfolioProjects.filter((_, index) => index % 2 === 1);
   const isTransferShowcase = params.slug === 'transfer' && hasShowcaseSection;
   const transferRoutes = isTransferShowcase ? await prefetchTransferRoutes(portfolioProjects) : undefined;
-  const transferGridClass =
-    'grid gap-8 lg:grid-cols-[minmax(0,1fr)_1.5rem_minmax(0,1fr)] lg:grid-rows-[auto_auto_auto_auto] lg:items-start lg:gap-x-8';
   const pageTitle = pageData.title ?? dict.pageTitles[slug];
   const pageDescription = pageData.intro ?? pageData.description ?? dict.meta.description;
   const serviceSlugs = new Set(['software', 'transfer', 'sponsored']);
@@ -111,7 +110,7 @@ export default async function Page(props: PageProps) {
       <div
         className={
           isTransferShowcase
-            ? transferGridClass
+            ? 'space-y-8'
             : hasShowcaseSection
               ? 'grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:grid-rows-[auto_auto_auto] lg:items-start lg:gap-x-8'
               : 'grid gap-8 lg:grid-cols-[1.05fr_0.95fr]'
@@ -128,15 +127,12 @@ export default async function Page(props: PageProps) {
               />
             )
           )}
-          {hasShowcaseSection && showcaseLabels ? (
+          {hasShowcaseSection && showcaseLabels && !isTransferShowcase ? (
             <section className="space-y-5 lg:hidden">
               <div>
                 <h3 className="text-xl text-white">{showcaseLabels.title}</h3>
                 <p className="mt-2 text-slate-300">{showcaseLabels.description}</p>
               </div>
-              {params.slug === 'transfer' ? (
-                <TransferPortfolioStats projects={portfolioProjects} lang={locale} labels={dict.transferStats} />
-              ) : null}
               <PortfolioJobList projects={portfolioProjects} lang={locale} pageSlug={params.slug} />
             </section>
           ) : null}
@@ -175,51 +171,15 @@ export default async function Page(props: PageProps) {
         {hasShowcaseSection ? (
           isTransferShowcase ? (
             <>
-              <div className="relative hidden lg:col-start-2 lg:row-start-1 lg:block lg:self-stretch">
-                <GlowDivider
-                  orientation="vertical"
-                  className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2"
-                />
-              </div>
-              <div className="lg:col-start-3 lg:row-start-1">
-                <GlowDivider orientation="horizontal" className="lg:hidden" />
-                <PageSidebar lang={locale} slug={params.slug} />
-              </div>
               {showcaseLabels ? (
-                <div className="hidden lg:col-span-3 lg:row-start-2 lg:block">
+                <div>
                   <h3 className="text-xl text-white">{showcaseLabels.title}</h3>
                   <p className="mt-2 text-slate-300">{showcaseLabels.description}</p>
                 </div>
               ) : null}
-              <div className="hidden lg:col-span-3 lg:row-start-3 lg:block">
-                <TransferPortfolioStats projects={portfolioProjects} lang={locale} labels={dict.transferStats} />
-              </div>
-              {portfolioProjects.length ? (
-                <>
-                  <div className="relative hidden lg:col-start-2 lg:row-start-4 lg:row-end-[-1] lg:block lg:self-stretch">
-                    <GlowDivider
-                      orientation="vertical"
-                      className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2"
-                    />
-                  </div>
-                  <div className="hidden lg:col-start-1 lg:row-start-4 lg:block">
-                    <PortfolioJobList
-                      projects={leftColumnJobs}
-                      lang={locale}
-                      pageSlug={params.slug}
-                      transferRoutes={transferRoutes}
-                    />
-                  </div>
-                  <div className="hidden lg:col-start-3 lg:row-start-4 lg:block">
-                    <PortfolioJobList
-                      projects={rightColumnJobs}
-                      lang={locale}
-                      pageSlug={params.slug}
-                      transferRoutes={transferRoutes}
-                    />
-                  </div>
-                </>
-              ) : null}
+              <TransferPortfolioStats projects={portfolioProjects} lang={locale} labels={dict.transferStats} />
+              <TransferPortfolioMap projects={portfolioProjects} routes={transferRoutes ?? {}} lang={locale} />
+              <PageSidebar lang={locale} slug={params.slug} />
             </>
           ) : (
             <>

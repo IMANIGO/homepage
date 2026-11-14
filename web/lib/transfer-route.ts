@@ -7,6 +7,14 @@ export function normalizeTourType(value?: string | null): TourType {
   return 'ab';
 }
 
+export function cleanWaypointList(values?: Array<string | null | undefined> | null) {
+  if (!Array.isArray(values)) {
+    return [];
+  }
+
+  return values.map((value) => (typeof value === 'string' ? value.trim() : '')).filter(Boolean);
+}
+
 export function getRouteWaypointNames(tourType: TourType, routeFrom: string, routeVia: string | undefined, routeTo: string) {
   const from = routeFrom.trim();
   const to = routeTo.trim();
@@ -19,6 +27,31 @@ export function getRouteWaypointNames(tourType: TourType, routeFrom: string, rou
       return [from, to, from];
     default:
       return [from, to];
+  }
+}
+
+/** Visible stops plus hidden detours — used for geometry, distance and duration. */
+export function getRoutingWaypointNames(
+  tourType: TourType,
+  routeFrom: string,
+  routeVia: string | undefined,
+  routeTo: string,
+  hiddenStops?: Array<string | null | undefined> | null,
+  hiddenStopsAfterVia?: Array<string | null | undefined> | null
+) {
+  const from = routeFrom.trim();
+  const to = routeTo.trim();
+  const via = routeVia?.trim();
+  const hidden = cleanWaypointList(hiddenStops);
+  const afterVia = cleanWaypointList(hiddenStopsAfterVia);
+
+  switch (tourType) {
+    case 'abc':
+      return via ? [from, ...hidden, via, ...afterVia, to] : [from, ...hidden, ...afterVia, to];
+    case 'round':
+      return [from, ...hidden, to, ...afterVia, from];
+    default:
+      return [from, ...hidden, ...afterVia, to];
   }
 }
 
