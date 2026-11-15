@@ -4,7 +4,7 @@ import { normalizeSoftwareTypes } from '../../lib/software-types';
 import type { Locale } from '../../lib/i18n';
 import { getDictionary } from '../../lib/i18n';
 import type { TransferRouteResponse } from '../../lib/transfer-route-api';
-import { getTransferRouteKey } from '../../lib/transfer-route-prefetch';
+import { getTransferRouteKey } from '../../lib/transfer-route-keys';
 import { ProjectCard } from './ProjectCard';
 import { SoftwareProjectCard } from './SoftwareProjectCard';
 import { SponsoredProjectCard } from './SponsoredProjectCard';

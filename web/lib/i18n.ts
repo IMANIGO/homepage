@@ -48,11 +48,15 @@ export const getDictionary = (locale: Locale) => {
         kmUnit: 'km',
         hoursUnit: 'h',
         shortestKm: 'Shortest tour',
-        longestKm: 'Longest tour'
+        longestKm: 'Longest tour',
+        averageKm: 'Average',
+        averageTimePerKm: 'Average time per km',
+        minutesPerKmUnit: 'min/km'
       },
       transferMap: {
         hint: 'All tours on one map. Hover a stretch of road to see every tour that passed there, then step through them.',
         empty: 'No mapped tours are available yet.',
+        loading: 'Loading routes…',
         sectionCount: '{count} tours passed this stretch',
         tourOf: 'Tour {current} of {total}',
         previousTour: 'Previous tour',
@@ -318,11 +322,15 @@ export const getDictionary = (locale: Locale) => {
         kmUnit: 'km',
         hoursUnit: 'Std.',
         shortestKm: 'Kürzeste Strecke',
-        longestKm: 'Längste Strecke'
+        longestKm: 'Längste Strecke',
+        averageKm: 'Durchschnitt',
+        averageTimePerKm: 'Durchschnittliche Zeit pro km',
+        minutesPerKmUnit: 'Min./km'
       },
       transferMap: {
         hint: 'Alle Touren auf einer Karte. Über einen Streckenabschnitt fahren, um alle Touren zu sehen, die dort entlanggeführt haben — dann einzeln durchblättern.',
         empty: 'Es sind noch keine gemappten Touren vorhanden.',
+        loading: 'Routen werden geladen …',
         sectionCount: '{count} Touren an diesem Abschnitt',
         tourOf: 'Tour {current} von {total}',
         previousTour: 'Vorherige Tour',

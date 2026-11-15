@@ -5,7 +5,7 @@ import {
   type TourType
 } from './transfer-route';
 import type { TransferRouteResponse } from './transfer-route-api';
-import { getTransferRouteKey } from './transfer-route-prefetch';
+import { getTransferRouteKey } from './transfer-route-keys';
 
 export const TRANSFER_ROUTE_COLORS = [
   '#0891b2',

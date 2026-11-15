@@ -26,6 +26,8 @@ export type TransferStats = {
   vehicleModels: string[];
   shortestKm: TransferDistanceExtreme | null;
   longestKm: TransferDistanceExtreme | null;
+  averageKm: number | null;
+  minutesPerKm: number | null;
   jobsWithDistance: number;
   jobsWithDuration: number;
 };
@@ -53,6 +55,8 @@ export function computeTransferStats(projects: TransferPortfolioItem[]): Transfe
   let jobsWithDuration = 0;
   let shortestKm: TransferDistanceExtreme | null = null;
   let longestKm: TransferDistanceExtreme | null = null;
+  let hoursWithDistance = 0;
+  let kmWithDuration = 0;
 
   for (const project of projects) {
     const tourType = normalizeTourType(project.tourType);
@@ -86,6 +90,15 @@ export function computeTransferStats(projects: TransferPortfolioItem[]): Transfe
       jobsWithDuration += 1;
     }
 
+    if (
+      hours > 0 &&
+      typeof project.distanceKm === 'number' &&
+      project.distanceKm > 0
+    ) {
+      hoursWithDistance += hours;
+      kmWithDuration += project.distanceKm;
+    }
+
     const model = project.vehicleModel?.trim();
     if (model) {
       vehicles.add(model);
@@ -103,11 +116,17 @@ export function computeTransferStats(projects: TransferPortfolioItem[]): Transfe
     vehicleModels: [...vehicles].sort((left, right) => left.localeCompare(right, 'de')),
     shortestKm,
     longestKm,
+    averageKm: jobsWithDistance > 0 ? totalKm / jobsWithDistance : null,
+    minutesPerKm: kmWithDuration > 0 ? (hoursWithDistance * 60) / kmWithDuration : null,
     jobsWithDistance,
     jobsWithDuration
   };
 }
 
-export function formatStatNumber(value: number, locale: 'de' | 'en') {
-  return new Intl.NumberFormat(locale === 'de' ? 'de-DE' : 'en-GB').format(value);
+export function formatStatNumber(
+  value: number,
+  locale: 'de' | 'en',
+  options?: { maximumFractionDigits?: number; minimumFractionDigits?: number }
+) {
+  return new Intl.NumberFormat(locale === 'de' ? 'de-DE' : 'en-GB', options).format(value);
 }

@@ -19,6 +19,9 @@ type TransferStatsLabels = {
   hoursUnit: string;
   shortestKm: string;
   longestKm: string;
+  averageKm: string;
+  averageTimePerKm: string;
+  minutesPerKmUnit: string;
 };
 
 function StatCard({
@@ -103,7 +106,7 @@ function StatCard({
         ? createPortal(
             <div
               role="tooltip"
-              className="pointer-events-none w-max max-w-[min(20rem,calc(100vw-1.5rem))] rounded-xl border border-slate-200 bg-white px-3 py-2 text-left text-xs leading-5 text-slate-900 shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
+              className="pointer-events-none w-max max-w-[min(20rem,calc(100vw-1.5rem))] rounded-xl border border-slate-200 bg-white px-3 py-2 text-left text-xs leading-5 text-slate-900 shadow-[0_12px_40px_rgba(0,0,0,0.45)] [&_p]:m-0"
               style={{
                 position: 'fixed',
                 top: coords.top,
@@ -146,20 +149,33 @@ export function TransferPortfolioStats({
         stats.jobsWithDistance > 0
           ? `${formatStatNumber(stats.totalKm, lang)} ${labels.kmUnit}`
           : '–',
-      tooltip:
-        stats.shortestKm && stats.longestKm
-          ? [
-              `${labels.shortestKm}: ${kmLabel(stats.shortestKm.km, stats.shortestKm.title)}`,
-              `${labels.longestKm}: ${kmLabel(stats.longestKm.km, stats.longestKm.title)}`
-            ]
-          : undefined
+      tooltip: [
+        stats.shortestKm
+          ? `${labels.shortestKm}: ${kmLabel(stats.shortestKm.km, stats.shortestKm.title)}`
+          : null,
+        stats.longestKm
+          ? `${labels.longestKm}: ${kmLabel(stats.longestKm.km, stats.longestKm.title)}`
+          : null,
+        stats.averageKm
+          ? `${labels.averageKm}: ${kmLabel(Math.round(stats.averageKm), '')}`
+          : null
+      ].filter((line): line is string => Boolean(line))
     },
     {
       label: labels.totalHours,
       value:
         stats.jobsWithDuration > 0
           ? `${formatStatNumber(stats.totalHours, lang)} ${labels.hoursUnit}`
-          : '–'
+          : '–',
+      tooltip:
+        stats.minutesPerKm != null
+          ? [
+              `${labels.averageTimePerKm}: ${formatStatNumber(stats.minutesPerKm, lang, {
+                maximumFractionDigits: 1,
+                minimumFractionDigits: 1
+              })} ${labels.minutesPerKmUnit}`
+            ]
+          : undefined
     },
     { label: labels.abTours, value: formatStatNumber(stats.abTours, lang) },
     { label: labels.abcTours, value: formatStatNumber(stats.abcTours, lang) },

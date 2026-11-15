@@ -1,4 +1,5 @@
 import { airportSearchQueries } from './airport-codes';
+import { lookupKnownPlace } from './known-places';
 
 export type GeoPoint = { lat: number; lng: number };
 
@@ -93,7 +94,7 @@ export function createGeocoder(options: { userAgent?: boolean } = {}) {
 
     const response = await fetch(
       `https://nominatim.openstreetmap.org/search?format=json&limit=5${countryParam}&q=${encodeURIComponent(query)}`,
-      { headers }
+      { headers, next: { revalidate: 2592000 } }
     );
     if (!response.ok) {
       return null;
@@ -116,6 +117,12 @@ export function createGeocoder(options: { userAgent?: boolean } = {}) {
     const cacheKey = trimmed.toLowerCase();
     if (cache.has(cacheKey)) {
       return cache.get(cacheKey) ?? null;
+    }
+
+    const known = lookupKnownPlace(trimmed);
+    if (known) {
+      cache.set(cacheKey, known);
+      return known;
     }
 
     const run = async () => {

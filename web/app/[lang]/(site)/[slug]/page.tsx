@@ -15,9 +15,8 @@ import { PageBodySection } from '../../../components/PageBodySection';
 import { PortfolioJobList, type PortfolioProject } from '../../../components/PortfolioJobList';
 import { TransferPortfolioStats } from '../../../components/TransferPortfolioStats';
 import { TransferPortfolioMap } from '../../../components/TransferPortfolioMap';
-import { prefetchTransferRoutes } from '../../../../lib/transfer-route-prefetch';
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return getPageSlugs().flatMap((slug) => ['de', 'en'].map((lang) => ({ lang, slug })));
@@ -85,7 +84,6 @@ export default async function Page(props: PageProps) {
   const leftColumnJobs = portfolioProjects.filter((_, index) => index % 2 === 0);
   const rightColumnJobs = portfolioProjects.filter((_, index) => index % 2 === 1);
   const isTransferShowcase = params.slug === 'transfer' && hasShowcaseSection;
-  const transferRoutes = isTransferShowcase ? await prefetchTransferRoutes(portfolioProjects) : undefined;
   const pageTitle = pageData.title ?? dict.pageTitles[slug];
   const pageDescription = pageData.intro ?? pageData.description ?? dict.meta.description;
   const serviceSlugs = new Set(['software', 'transfer', 'sponsored']);
@@ -178,7 +176,7 @@ export default async function Page(props: PageProps) {
                 </div>
               ) : null}
               <TransferPortfolioStats projects={portfolioProjects} lang={locale} labels={dict.transferStats} />
-              <TransferPortfolioMap projects={portfolioProjects} routes={transferRoutes ?? {}} lang={locale} />
+              <TransferPortfolioMap projects={portfolioProjects} lang={locale} />
               <PageSidebar lang={locale} slug={params.slug} />
             </>
           ) : (

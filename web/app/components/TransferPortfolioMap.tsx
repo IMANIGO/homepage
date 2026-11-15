@@ -16,10 +16,10 @@ import type { TransferRouteResponse } from '../../lib/transfer-route-api';
 import { formatVehicleLabel } from '../../lib/vehicle-condition';
 import { enableLeafletTrackpadZoom } from '../../lib/leaflet-trackpad-zoom';
 import { fetchDrivingRouteLine, hasRoadGeometry } from '../../lib/osrm-line';
+import { fetchMissingTransferRoutes, routesFromKnownPlaces } from '../../lib/transfer-route-client';
 
 type TransferPortfolioMapProps = {
   projects: TransferMapProject[];
-  routes: Record<string, TransferRouteResponse>;
   lang: Locale;
 };
 
@@ -42,8 +42,14 @@ function sameKeys(left: string[], right: string[]) {
   return right.every((key) => set.has(key));
 }
 
-export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfolioMapProps) {
+export function TransferPortfolioMap({ projects, lang }: TransferPortfolioMapProps) {
   const dict = getDictionary(lang);
+  const [routes, setRoutes] = useState<Record<string, TransferRouteResponse>>(
+    () => routesFromKnownPlaces(projects).routes
+  );
+  const [loadingRoutes, setLoadingRoutes] = useState(
+    () => Object.keys(routesFromKnownPlaces(projects).missing).length > 0
+  );
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const hideTimer = useRef<number | null>(null);
@@ -53,6 +59,35 @@ export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfol
   const groups = buildTransferMapGroups(projects, routes, dict.tourTypes);
   const groupsRef = useRef(groups);
   groupsRef.current = groups;
+  const routeSignature = Object.keys(routes).sort().join('|');
+
+  useEffect(() => {
+    let cancelled = false;
+    const { routes: known, missing } = routesFromKnownPlaces(projects);
+    setRoutes((current) => ({ ...known, ...current }));
+    if (!Object.keys(missing).length) {
+      setLoadingRoutes(false);
+      return;
+    }
+
+    setLoadingRoutes(true);
+    fetchMissingTransferRoutes(missing)
+      .then((extra) => {
+        if (cancelled) {
+          return;
+        }
+        setRoutes((current) => ({ ...current, ...extra }));
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setLoadingRoutes(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [projects]);
 
   const [activeKeys, setActiveKeys] = useState<string[]>([]);
   const [tourIndex, setTourIndex] = useState(0);
@@ -275,21 +310,20 @@ export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfol
       }
 
       async function followRoads() {
-        for (const group of groupsRef.current) {
-          if (cancelled) {
-            return;
-          }
-          if (hasRoadGeometry(group.geometry.routeLine)) {
-            continue;
-          }
-          const road = await fetchDrivingRouteLine(group.geometry.stops);
-          if (cancelled || !hasRoadGeometry(road)) {
-            continue;
-          }
-          group.geometry.routeLine = road;
-          visualsRef.current.get(group.key)?.line.setLatLngs(road);
-          road.forEach((point) => bounds.extend(point));
-        }
+        await Promise.all(
+          groupsRef.current.map(async (group) => {
+            if (cancelled || hasRoadGeometry(group.geometry.routeLine)) {
+              return;
+            }
+            const road = await fetchDrivingRouteLine(group.geometry.stops);
+            if (cancelled || !hasRoadGeometry(road)) {
+              return;
+            }
+            group.geometry.routeLine = road;
+            visualsRef.current.get(group.key)?.line.setLatLngs(road);
+            road.forEach((point) => bounds.extend(point));
+          })
+        );
         assignDistinctRouteColors(groupsRef.current);
         groupsRef.current.forEach((group) => {
           const visual = visualsRef.current.get(group.key);
@@ -338,7 +372,7 @@ export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfol
         mapRef.current = null;
       }
     };
-  }, []);
+  }, [routeSignature]);
 
   useEffect(() => {
     if (!current) {
@@ -382,7 +416,7 @@ export function TransferPortfolioMap({ projects, routes, lang }: TransferPortfol
   if (!groups.length) {
     return (
       <div className="flex min-h-[18rem] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-6 text-center text-sm text-slate-400">
-        {dict.transferMap.empty}
+        {loadingRoutes ? dict.transferMap.loading : dict.transferMap.empty}
       </div>
     );
   }
